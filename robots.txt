@@ -1,1 +1,1 @@
-Sitemap: https://fastpages.fast.ai/sitemap.xml
+Sitemap: https://anirudhdagar.github.io/gsoc/sitemap.xml
