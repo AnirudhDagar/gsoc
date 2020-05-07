@@ -43,10 +43,6 @@
   
 
   
-
-  
-  
-
   
 
   
@@ -59,7 +55,7 @@
   
 
   
-      ,"page10": {
+      ,"page8": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://anirudhdagar.github.io/gsoc/robots.txt",
