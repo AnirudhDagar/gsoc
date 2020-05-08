@@ -1,4 +1,149 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://anirudhdagar.github.io/gsoc/feed.xml" rel="self" type="application/atom+xml" /><link href="https://anirudhdagar.github.io/gsoc/" rel="alternate" type="text/html" /><updated>2020-05-07T13:05:24-05:00</updated><id>https://anirudhdagar.github.io/gsoc/feed.xml</id><title type="html">GSoC</title><subtitle>Blog GSoC 2020 @ CERN-HSF.</subtitle><entry><title type="html">Fastpages Notebook Blog Post</title><link href="https://anirudhdagar.github.io/gsoc/jupyter/2020/02/20/test.html" rel="alternate" type="text/html" title="Fastpages Notebook Blog Post" /><published>2020-02-20T00:00:00-06:00</published><updated>2020-02-20T00:00:00-06:00</updated><id>https://anirudhdagar.github.io/gsoc/jupyter/2020/02/20/test</id><content type="html" xml:base="https://anirudhdagar.github.io/gsoc/jupyter/2020/02/20/test.html">&lt;!--
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://anirudhdagar.github.io/gsoc/feed.xml" rel="self" type="application/atom+xml" /><link href="https://anirudhdagar.github.io/gsoc/" rel="alternate" type="text/html" /><updated>2020-05-07T19:11:14-05:00</updated><id>https://anirudhdagar.github.io/gsoc/feed.xml</id><title type="html">GSoC</title><subtitle>Blog GSoC 2020 @ CERN-HSF.</subtitle><entry><title type="html">I am in!</title><link href="https://anirudhdagar.github.io/gsoc/markdown/2020/05/07/post1-i-am-in.html" rel="alternate" type="text/html" title="I am in!" /><published>2020-05-07T00:00:00-05:00</published><updated>2020-05-07T00:00:00-05:00</updated><id>https://anirudhdagar.github.io/gsoc/markdown/2020/05/07/post1-i-am-in</id><content type="html" xml:base="https://anirudhdagar.github.io/gsoc/markdown/2020/05/07/post1-i-am-in.html">&lt;h1 id=&quot;journey-to-selection-day&quot;&gt;Journey to Selection Day&lt;/h1&gt;
+
+&lt;p&gt;Hi Everyone, I am glad to inform that I have been selected as a Student Developer in Google Summer of Code 2020 at CERN-HSF. I am really excited about contributing and working on the project &lt;a href=&quot;https://hepsoftwarefoundation.org/gsoc/2020/proposal_TMVAPyTorch.html&quot;&gt;“TMVA Interfaces PyTorch”&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;font color=&quot;#1756a9&quot;&gt;tl;dr&lt;/font&gt;&lt;/strong&gt; : My project involves creating a PyTorch interface on top of the TMVA PyMVA framework for making PyTorch like model definitions possible. In essence the idea is, PyTorch provides model definition, training and prediction but TMVA does the preprocessing, dataloading, validation, testing etc.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/gsoc/images/GSoC_accept.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the first time I applied for GSoC. It was such a delight seeing this in my mail, and I hope I can do justice to the project, achieving the desired goals.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/gsoc/images/GSoC_accept_mail.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My project is co-mentored by &lt;a href=&quot;https://www.linkedin.com/in/lorenzo-moneta-982b902/&quot;&gt;Lorenzo Moneta&lt;/a&gt;, &lt;a href=&quot;https://www.linkedin.com/in/akshay-vashistha-9a558778/&quot;&gt;Akshay Vashishtha&lt;/a&gt; and &lt;a href=&quot;https://www.linkedin.com/in/omar-andres-zapata-mesa-4ab16a5b/&quot;&gt;Omar Andres Zapata Mesa&lt;/a&gt; from the following organizations:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hepsoftwarefoundation.org/&quot;&gt;HEP Software Foundation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://oproject.org/&quot;&gt;OProject&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.kit.edu/english/&quot;&gt;Karlsruhe Institute of Technology (KIT)&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
+
+&lt;p&gt;I :heart: open source and for the past one year, I have been actively involved in various open-source projects &lt;a href=&quot;https://github.com/anirudhdagar&quot;&gt;(See GitHub)&lt;/a&gt;. Google Summer of Code (GSoC) is a program that matches mentoring organizations with college and university student developers, who work on developing open source code throughout the summers. Each year, Google works with many open source, free software and technology-related groups to identify and fund proposals for student open source projects.
+GSoC pairs accepted student applicants with mentors from participating projects. Accepted students gain exposure to real-world software development.&lt;/p&gt;
+
+&lt;p&gt;Making an impact and contributing to the software used and developed by one of the world’s &lt;strong&gt;largest&lt;/strong&gt; and most &lt;strong&gt;respected&lt;/strong&gt; scientefic research centres, &lt;strong&gt;CERN&lt;/strong&gt;, was the key driving force along with my inclination and skills in &lt;strong&gt;Machine Learning, Research and Open Source.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;about-organization&quot;&gt;About Organization&lt;/h2&gt;
+
+&lt;p&gt;CERN-HSF (High-Energy Physics Software Foundation) is the umbrella organization for high-energy physics-related projects in GSoC. The HEP Software Foundation facilitates the coordination of common international efforts in high-energy physics software and computing.&lt;/p&gt;
+
+&lt;p&gt;TMVA is a submodule of ROOT Project ( One of the famous projects by CERN ). ROOT is a modular scientific software framework. It provides all the functionalities needed to deal with big data processing, statistical analysis, visualisation and storage. It is mainly written in C++ but integrated with other languages such as Python and R. The Toolkit for Multivariate Data Analysis with ROOT (TMVA) is a standalone project that provides a ROOT-integrated machine learning environment for the processing and parallel evaluation of sophisticated multivariate classification techniques.&lt;/p&gt;
+
+&lt;h2 id=&quot;experience-applying-to-gsoc&quot;&gt;Experience Applying to GSoC&lt;/h2&gt;
+
+&lt;p&gt;If I had to summarize in a few words, &lt;strong&gt;it was pretty fun!!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;So, I stumbled upon this project on &lt;strong&gt;&lt;a href=&quot;https://hepsoftwarefoundation.org/gsoc/2020/proposal_TMVAGraph.html&quot;&gt;“TMVA Graph Neural Networks”&lt;/a&gt;&lt;/strong&gt;, and I was immediately interested due to my recent work and background in &lt;strong&gt;graph representation learning&lt;/strong&gt;. I was very upto date with the literature in this field and had done a thorough literature survey in the past couple of years. I already knew a bit about ROOT and CERN-HSF and I had skimmed over the codebase on github long time back. So I decided to apply and I did. I started with completing the tasks and later focused on my &lt;a href=&quot;https://drive.google.com/open?id=1Df22pHUzj1rSh06I3CH2EFEsJcBshLCO5mg1aTHR8pQ&quot;&gt;proposal&lt;/a&gt; for this idea.&lt;/p&gt;
+
+&lt;p&gt;After reviewing my submission, the mentors were very impressed with my work and mentioned their interest in working with me and realizing this. But, they also encouraged me to apply to some other projects as well, if I was interested in the other ideas. One of the mentors &lt;strong&gt;emphasized&lt;/strong&gt;, that the idea on &lt;strong&gt;&lt;a href=&quot;https://hepsoftwarefoundation.org/gsoc/2020/proposal_TMVAPyTorch.html&quot;&gt;“TMVA Interfaces PyTorch”&lt;/a&gt;&lt;/strong&gt; was a high impact project and I could eventually better serve particle physicists working on Machine Learning at CERN, by leading this new direction for the development of TMVA.&lt;/p&gt;
+
+&lt;p&gt;I took my time to think and decided to read about this other idea in detail to be ascertain about my interests. I was again driven by the impact I could make at CERN through this project and ultimately started working on my &lt;strong&gt;second proposal&lt;/strong&gt;. After a few sleepless nights, understanding the codebase for this part of the project, I finally pulled off the proposal just a few hours before the deadline. I then completed the tasks for this project as well in the next couple of days.&lt;/p&gt;
+
+&lt;h2 id=&quot;start-of-community-bonding-period&quot;&gt;Start of Community Bonding Period&lt;/h2&gt;
+
+&lt;p&gt;The first phase of the &lt;a href=&quot;https://summerofcode.withgoogle.com/how-it-works/#timeline&quot;&gt;program timeline&lt;/a&gt; for selected students is the community bonding period which started on May 4th. In this period students familiarise with organisation’s community, understand codebase, contact their mentors and decide their communication modes, meeting time etc. We decided to have an introductory meet on 8th May. This first of many Zoom/Skype meetings will set the stage for the project and the agenda is to meet other TMVA developers and GSoC students while also presenting and explaining their proposals.&lt;/p&gt;
+
+&lt;p&gt;Also, given the special situation of COVID-19 this year, I’ll be very alert and will try to stay a few steps ahead on my proposed timeline, just to combat and adjust for any kind of changes I may have to make in the timeline due to my semester exams. These End-Term Exams were originally scheduled to be conducted in April but have been indefinitely postponed for now.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I’ll try to keep the space spiced up and explanable by sharing code snippets along my journey in the coming months like below&lt;/p&gt;
+
+&lt;p&gt;Python code and output:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Say hi to open-source
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello Open-Source World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Formatting text as shell commands:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;TMVA Developers are awesome!&quot;&lt;/span&gt;
+./gsoc_script.sh &lt;span class=&quot;nt&quot;&gt;--option&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;start&quot;&lt;/span&gt;
+wget https://home.cern/community_bonding_period.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I hope that this summer will be interesting, challenging and productive.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To me GSoC is all about communicating, learning and making an impact for the love of open-source. :heart:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Stay tuned for my next post! I’ll try to make the blogs very interpretable and interactive while documenting and explaining all my experiences and learnings in these coming days.&lt;/p&gt;
+
+&lt;p&gt;Contact me through &lt;a href=&quot;mailto:anirudhdagar6@gmail.com&quot;&gt;mail&lt;/a&gt; or follow me on&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;See you on the other side!&lt;/p&gt;
+
+&lt;p&gt;Signing Off.&lt;/p&gt;
+
+&lt;!-- USEFUL STUFF FOR BLOGS USING JEKYLL --&gt;
+
+&lt;!--  
+## Lists
+
+Here's a list:
+
+- item 1
+- item 2
+
+And a numbered list:
+
+1. item 1
+1. item 2
+
+## Boxes and stuff
+
+&gt; This is a quotation
+
+&lt;div class=&quot;Toast Toast--warning googoo&quot;&gt;
+   &lt;span class=&quot;Toast-icon&quot;&gt;&lt;svg class=&quot;octicon octicon-alert&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;
+   &lt;span class=&quot;Toast-content&quot;&gt;You can include alert boxes&lt;/span&gt;
+&lt;/div&gt;
+
+
+...and...
+
+&lt;div class=&quot;Toast&quot;&gt;
+   &lt;span class=&quot;Toast-icon&quot;&gt;&lt;svg class=&quot;octicon octicon-info&quot; viewBox=&quot;0 0 14 16&quot; version=&quot;1.1&quot; width=&quot;14&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;
+   &lt;span class=&quot;Toast-content&quot;&gt;You can include info boxes&lt;/span&gt;
+&lt;/div&gt;
+
+
+## Code
+
+
+
+General preformatted text:
+
+    # Do a thing
+    do_thing() --&gt;
+
+&lt;!-- ## Tables
+
+| Column 1 | Column 2 |
+|-|-|
+| A thing | Another thing |
+
+
+## Tweetcards
+
+&lt;div class='jekyll-twitter-plugin'&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Altair 4.0 is released! &lt;a href=&quot;https://t.co/PCyrIOTcvv&quot;&gt;https://t.co/PCyrIOTcvv&lt;/a&gt;&lt;br&gt;Try it with:&lt;br&gt;&lt;br&gt;  pip install -U altair&lt;br&gt;&lt;br&gt;The full list of changes is at &lt;a href=&quot;https://t.co/roXmzcsT58&quot;&gt;https://t.co/roXmzcsT58&lt;/a&gt; ...read on for some highlights. &lt;a href=&quot;https://t.co/vWJ0ZveKbZ&quot;&gt;pic.twitter.com/vWJ0ZveKbZ&lt;/a&gt;&lt;/p&gt;&amp;mdash; Jake VanderPlas (@jakevdp) &lt;a href=&quot;https://twitter.com/jakevdp/status/1204765621767901185?ref_src=twsrc%5Etfw&quot;&gt;December 11, 2019&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+
+
+## Footnotes
+
+
+
+[^1]: This is the footnote. --&gt;</content><author><name></name></author><summary type="html">Journey to Selection Day</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://anirudhdagar.github.io/gsoc/images/GSoC_accept.jpg" /><media:content medium="image" url="https://anirudhdagar.github.io/gsoc/images/GSoC_accept.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Fastpages Notebook Blog Post</title><link href="https://anirudhdagar.github.io/gsoc/jupyter/2020/02/20/test/" rel="alternate" type="text/html" title="Fastpages Notebook Blog Post" /><published>2020-02-20T00:00:00-06:00</published><updated>2020-02-20T00:00:00-06:00</updated><id>https://anirudhdagar.github.io/gsoc/jupyter/2020/02/20/test</id><content type="html" xml:base="https://anirudhdagar.github.io/gsoc/jupyter/2020/02/20/test/">&lt;!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################

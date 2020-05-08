@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://anirudhdagar.github.io/gsoc/jupyter/2020/02/20/test.html</loc>
+<loc>https://anirudhdagar.github.io/gsoc/jupyter/2020/02/20/test/</loc>
 <lastmod>2020-02-20T00:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>https://anirudhdagar.github.io/gsoc/markdown/2020/05/07/post1-i-am-in.html</loc>
+<lastmod>2020-05-07T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://anirudhdagar.github.io/gsoc/about/</loc>
@@ -12,10 +16,10 @@
 </url>
 <url>
 <loc>https://anirudhdagar.github.io/gsoc/_pages/search.html</loc>
-<lastmod>2020-05-07T13:04:43-05:00</lastmod>
+<lastmod>2020-05-07T19:10:39-05:00</lastmod>
 </url>
 <url>
 <loc>https://anirudhdagar.github.io/gsoc/_pages/tags.html</loc>
-<lastmod>2020-05-07T13:04:43-05:00</lastmod>
+<lastmod>2020-05-07T19:10:39-05:00</lastmod>
 </url>
 </urlset>
