@@ -5,7 +5,17 @@
 
 ## CERN-HSF
 
-Some helpful ROOT/TMVA links:
+**Building Root on MacOS X (Without Anaconda)**:
+```bash
+git clone https://github.com/root-project/root.git
+cd root
+mkdir _build
+cd _build
+cmake -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/include/python3.7m -DPYTHON_EXECUTABLE=/usr/local/opt/python/libexec/bin/python -DINTERFACE_PYTHON=ON ..
+make -j4
+```
+
+**Some helpful ROOT/TMVA links**:
 
 * [ROOT Homepage](https://root.cern.ch/)
 * [ROOT Forums](https://root-forum.cern.ch/)
