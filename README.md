@@ -7,13 +7,17 @@
 This is the source repository for my GSoC blog and I've kept some useful stuff in the readme as well which I may refer along the way for the project.
 
 **Building Root on MacOS X (Without Anaconda)**:
+
 ```bash
+#Note: Ensure that all conda environments are deactivated.
 git clone https://github.com/root-project/root.git
-cd root
-mkdir _build
-cd _build
-cmake -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/include/python3.7m -DPYTHON_EXECUTABLE=/usr/local/opt/python/libexec/bin/python -DINTERFACE_PYTHON=ON ..
-make -j4
+mkdir build_root install_root && cd build_root
+cmake -DCMAKE_INSTALL_PREFIX=../install_root ../root # && check cmake configuration output for warnings or errors
+cmake --build . -- install -j4 # if you have 4 cores available for compilation
+source ../install_root/bin/thisroot.sh 
+
+#Setup an alias for this
+alias thisroot='source /Users/gollum/Desktop/Work/gsoc/install_root/bin/thisroot.sh'
 ```
 
 **Some helpful ROOT/TMVA links**:
