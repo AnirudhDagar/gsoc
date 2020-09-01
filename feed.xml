@@ -1,4 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://anirudhdagar.github.io/gsoc/feed.xml" rel="self" type="application/atom+xml" /><link href="https://anirudhdagar.github.io/gsoc/" rel="alternate" type="text/html" /><updated>2020-08-31T23:14:26-05:00</updated><id>https://anirudhdagar.github.io/gsoc/feed.xml</id><title type="html">GSoC</title><subtitle>Anirudh Dagar's GSoC 2020 Blog @ CERN-HSF</subtitle><entry><title type="html">Tutorial: TMVA PyTorch Interface</title><link href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html" rel="alternate" type="text/html" title="Tutorial: TMVA PyTorch Interface" /><published>2020-08-21T00:00:00-05:00</published><updated>2020-08-21T00:00:00-05:00</updated><id>https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial</id><content type="html" xml:base="https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html">&lt;!--
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://anirudhdagar.github.io/gsoc/feed.xml" rel="self" type="application/atom+xml" /><link href="https://anirudhdagar.github.io/gsoc/" rel="alternate" type="text/html" /><updated>2020-09-01T00:56:35-05:00</updated><id>https://anirudhdagar.github.io/gsoc/feed.xml</id><title type="html">GSoC</title><subtitle>Anirudh Dagar's GSoC 2020 Blog @ CERN-HSF</subtitle><entry><title type="html">End of GSoC!</title><link href="https://anirudhdagar.github.io/gsoc/evaluation/gsoc/experience/2020/08/31/GSoC-End.html" rel="alternate" type="text/html" title="End of GSoC!" /><published>2020-08-31T00:00:00-05:00</published><updated>2020-08-31T00:00:00-05:00</updated><id>https://anirudhdagar.github.io/gsoc/evaluation/gsoc/experience/2020/08/31/GSoC-End</id><content type="html" xml:base="https://anirudhdagar.github.io/gsoc/evaluation/gsoc/experience/2020/08/31/GSoC-End.html">&lt;blockquote&gt;
+  &lt;p&gt;TLDR: It feels unbelievable to have contributed to CERN as a GSoC student. My contributions can be found at &lt;a href=&quot;https://github.com/root-project/root/pull/5757&quot;&gt;#5757&lt;/a&gt; and &lt;a href=&quot;https://github.com/root-project/root/pull/6273&quot;&gt;#6273&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img alt=&quot;Can't See? Something went wrong!&quot; src=&quot;/gsoc/images/gsoc_final_remarks.jpg&quot; width=&quot;60%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Summer of 2020 has been nothing short of a roller-coaster ride filled with challenges and obstacles. I feel a sense of achievement, looking back at the work I managed to complete while hitting my goals and targets in these trying times. Ever since my first pull request got merged, I have been longing to create an impact with open source contributions. Thanks to CERN-HSF and Google Summer Of Code for providing me an opportunity to work on the &lt;strong&gt;ROOT TMVA&lt;/strong&gt; framework which provides a machine learning environment for the modelling, processing and evaluation of high-energy physics data.&lt;/p&gt;
+
+&lt;p&gt;Let us see what I have done this summer.&lt;/p&gt;
+
+&lt;p&gt;During these three months, I developed a PyTorch Interface for TMVA. Hopefully, users and developers will utilize the newest addition to the TMVA family.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;pull-requests-made&quot;&gt;Pull Requests Made:&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;[Major]&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/root-project/root/pull/5757&quot;&gt;#5757&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/root-project/root/pull/6273&quot;&gt;#6273&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;[Minor]&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/root-project/root/pull/5936&quot;&gt;#5936&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/root-project/root/pull/6253&quot;&gt;#6253&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;deliverables-achieved&quot;&gt;Deliverables Achieved&lt;/h1&gt;
+
+&lt;h3 id=&quot;header-methodpytorch&quot;&gt;Header MethodPyTorch&lt;/h3&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;MethodPyTorch.h&lt;/code&gt; header.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;class-methodpytorch&quot;&gt;Class MethodPyTorch&lt;/h3&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;
+    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;MethodPyTorch.cxx&lt;/code&gt; class.&lt;/p&gt;
+
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement the &lt;code class=&quot;highlighter-rouge&quot;&gt;DeclareOptions&lt;/code&gt; method&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement &lt;code class=&quot;highlighter-rouge&quot;&gt;ProcessOptions&lt;/code&gt; methods&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement &lt;code class=&quot;highlighter-rouge&quot;&gt;SetupTorchModel&lt;/code&gt; method&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement train methods
+        &lt;ul class=&quot;task-list&quot;&gt;
+          &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement simple basic structure for training&lt;/li&gt;
+          &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add ability to load code from users&lt;/li&gt;
+          &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Convert numpy based dataloaders in TMVA to PyTorch dataloaders&lt;/li&gt;
+          &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Use default (optional optimizer SGD)&lt;/li&gt;
+          &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add callbacks: savebest model, scheduler etc&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement &lt;code class=&quot;highlighter-rouge&quot;&gt;GetNumValidationSamples&lt;/code&gt;&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement Validation in &lt;code class=&quot;highlighter-rouge&quot;&gt;train_func&lt;/code&gt;&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add model prediction function loading ability&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implementation of the &lt;code class=&quot;highlighter-rouge&quot;&gt;GetMVA*&lt;/code&gt;
+        &lt;ul class=&quot;task-list&quot;&gt;
+          &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GetMvaValues&lt;/code&gt; method for Classification&lt;/li&gt;
+          &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GetRegressionValues&lt;/code&gt; method for Regression&lt;/li&gt;
+          &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GetMulticlassValues&lt;/code&gt; method for MultiClass Classification.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement helper function&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tests&quot;&gt;Tests&lt;/h3&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add testPyTorchClassification.C
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add generatePyTorchModelClassification.py&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Load, Train model and test all the parameter arguments&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Verify response after model prediction function is added.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add testPyTorchMulticlass.C
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add generatePyTorchModelMulticlass.py&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Load, Train model and test all the parameter arguments&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Verify response after model prediction function is added.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add testPyTorchRegression.C
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add generatePyTorchModelRegression.py&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Load, Train model and test all the parameter arguments&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Verify response after model prediction function is added.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tutorials&quot;&gt;Tutorials&lt;/h3&gt;
+
+&lt;p&gt;Made a blog post &lt;a href=&quot;https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Also the tutorials are implemented in &lt;a href=&quot;https://github.com/root-project/root/pull/6273&quot;&gt;#6273&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add TMVA ClassificationPyTorch&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add TMVA RegressionPyTorch&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add TMVA MulticlassPyTorch&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add TMVA ApplicationRegressionPyTorch&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add TMVA ApplicationClassificationPyTorch&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;/h2&gt;
+
+&lt;p&gt;I am grateful to my mentors for their invaluable guidance and support throughout my GSoC journey. ❤️&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.linkedin.com/in/lorenzo-moneta-982b902/&quot;&gt;Lorenzo Moneta&lt;/a&gt; (Senior Physicist at CERN)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.linkedin.com/in/omar-andres-zapata-mesa-4ab16a5b/&quot;&gt;Omar Andres Zapata Mesa&lt;/a&gt; (Research Fellow at CERN)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Thankyou for believing in me. I honestly never thought I would have the chance to get in, or even be accepted, at one of the finest research organizations in the world. Hoping that my contributions may help in discovering the next Higgs Boson! 💥&lt;/p&gt;
+
+&lt;p&gt;Signing Off!!!&lt;/p&gt;</content><author><name></name></author><summary type="html">TLDR: It feels unbelievable to have contributed to CERN as a GSoC student. My contributions can be found at #5757 and #6273.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://anirudhdagar.github.io/gsoc/images/gsoc_final_remarks.jpg" /><media:content medium="image" url="https://anirudhdagar.github.io/gsoc/images/gsoc_final_remarks.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tutorial: TMVA PyTorch Interface</title><link href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html" rel="alternate" type="text/html" title="Tutorial: TMVA PyTorch Interface" /><published>2020-08-21T00:00:00-05:00</published><updated>2020-08-21T00:00:00-05:00</updated><id>https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial</id><content type="html" xml:base="https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html">&lt;!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
@@ -1043,7 +1179,53 @@ Signing Off!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>Anirudh Dagar</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://anirudhdagar.github.io/gsoc/images/tmva.jpg" /><media:content medium="image" url="https://anirudhdagar.github.io/gsoc/images/tmva.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Internals: TMVA PyTorch Interface</title><link href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html" rel="alternate" type="text/html" title="Internals: TMVA PyTorch Interface" /><published>2020-07-22T00:00:00-05:00</published><updated>2020-07-22T00:00:00-05:00</updated><id>https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface</id><content type="html" xml:base="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html">&lt;p&gt;&lt;img alt=&quot;Can't See? Something went wrong!&quot; src=&quot;/gsoc/images/who-handles-what.png&quot; /&gt;&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Anirudh Dagar</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://anirudhdagar.github.io/gsoc/images/tmva.jpg" /><media:content medium="image" url="https://anirudhdagar.github.io/gsoc/images/tmva.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Phase 2 Evaluations</title><link href="https://anirudhdagar.github.io/gsoc/coding/evaluation/gsoc/2020/08/02/Phase-2-Ends.html" rel="alternate" type="text/html" title="Phase 2 Evaluations" /><published>2020-08-02T00:00:00-05:00</published><updated>2020-08-02T00:00:00-05:00</updated><id>https://anirudhdagar.github.io/gsoc/coding/evaluation/gsoc/2020/08/02/Phase-2-Ends</id><content type="html" xml:base="https://anirudhdagar.github.io/gsoc/coding/evaluation/gsoc/2020/08/02/Phase-2-Ends.html">&lt;p&gt;&lt;img alt=&quot;Can't See? Something went wrong!&quot; src=&quot;/gsoc/images/progress.gif&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;progress&quot;&gt;Progress&lt;/h1&gt;
+
+&lt;p&gt;In continuation to the Phase 1 updates, this is a short update on my progress till the Phase 2 Evaluations in GSoC 2020. A major concern regarding the TMVA PyTorch Interface in the last 2 months has been the &lt;code class=&quot;highlighter-rouge&quot;&gt;train&lt;/code&gt; method. Finally, I’ve been able to solve the issues and bugs and have incorporated a simplified version of &lt;code class=&quot;highlighter-rouge&quot;&gt;train&lt;/code&gt; method successfully. Below are the goals set before the 2nd Evaluation according to my proposal, of which I was able to complete the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Header MethodPyTorch&lt;/strong&gt;&lt;/p&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add Initial Structure for &lt;code class=&quot;highlighter-rouge&quot;&gt;MethodPyTorch.h&lt;/code&gt; header file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Class MethodPyTorch&lt;/strong&gt;
+Implement the basic outline of &lt;code class=&quot;highlighter-rouge&quot;&gt;MethodPyTorch.cxx&lt;/code&gt; Class.&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement the &lt;code class=&quot;highlighter-rouge&quot;&gt;DeclareOptions&lt;/code&gt; method&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement &lt;code class=&quot;highlighter-rouge&quot;&gt;ProcessOptions&lt;/code&gt; methods&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement &lt;code class=&quot;highlighter-rouge&quot;&gt;SetupTorchModel&lt;/code&gt; method&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Implement train methods. (Partially Completed)
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement simple basic structure for training&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Add ability to load code from users&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Convert numpy based dataloaders in TMVA to PyTorch dataloaders&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Use default optimizer (optional optimizer SGD)&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Add savebest model&lt;/li&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Add scheduler&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement &lt;code class=&quot;highlighter-rouge&quot;&gt;GetNumValidationSamples&lt;/code&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement Validation in &lt;code class=&quot;highlighter-rouge&quot;&gt;train_func&lt;/code&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement &lt;code class=&quot;highlighter-rouge&quot;&gt;helper&lt;/code&gt; method&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement the Tests
+    &lt;ul class=&quot;task-list&quot;&gt;
+      &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Implement &lt;code class=&quot;highlighter-rouge&quot;&gt;testPyTorchClassification.C&lt;/code&gt; (WIP (Training works))&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;train&lt;/code&gt; method in the &lt;code class=&quot;highlighter-rouge&quot;&gt;MethodPyTorch&lt;/code&gt; is almost complete. I need to add features for Keras like callbacks, which after discussing with my mentors, we’ve decided to implement in the next month. I’d also like to thank Lorenzo for helping me out when I was stuck with issues related to &lt;code class=&quot;highlighter-rouge&quot;&gt;user code loding&lt;/code&gt; in the TMVA Interface.&lt;/p&gt;
+
+&lt;p&gt;In the final month I’ll be working on the prediction side of the interface, involving implementation of the &lt;code class=&quot;highlighter-rouge&quot;&gt;GetMvaValues&lt;/code&gt; method for Classification, &lt;code class=&quot;highlighter-rouge&quot;&gt;GetRegressionValues&lt;/code&gt; method for Regression and &lt;code class=&quot;highlighter-rouge&quot;&gt;GetMulticlassValues&lt;/code&gt; method for MultiClass multi-variate analysis.&lt;/p&gt;
+
+&lt;p&gt;This will also involve the utilization of user-defined &lt;code class=&quot;highlighter-rouge&quot;&gt;predict&lt;/code&gt; function in pytorch.&lt;/p&gt;
+
+&lt;p&gt;Later I’ll be implementing all the remaining tests and tutorials.&lt;/p&gt;
+
+&lt;p&gt;I’m feeling confident about my progress and I shall be able to wrap up the complete interface in the next couple of weeks!💪&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://anirudhdagar.github.io/gsoc/images/progress.gif" /><media:content medium="image" url="https://anirudhdagar.github.io/gsoc/images/progress.gif" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Internals: TMVA PyTorch Interface</title><link href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html" rel="alternate" type="text/html" title="Internals: TMVA PyTorch Interface" /><published>2020-07-22T00:00:00-05:00</published><updated>2020-07-22T00:00:00-05:00</updated><id>https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface</id><content type="html" xml:base="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html">&lt;p&gt;&lt;img alt=&quot;Can't See? Something went wrong!&quot; src=&quot;/gsoc/images/who-handles-what.png&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;tmva-pytorch-interface-structure&quot;&gt;TMVA PyTorch Interface Structure&lt;/h3&gt;
 
@@ -2047,7 +2229,7 @@ wget https://home.cern/community_bonding_period.txt
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
-&lt;p&gt;&lt;img src=&quot;/gsoc/images/copied_from_nb/my_icons/fastai_logo.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/gsoc20/images/copied_from_nb/my_icons/fastai_logo.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
