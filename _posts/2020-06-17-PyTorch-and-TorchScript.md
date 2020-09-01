@@ -10,21 +10,21 @@ comments: true
 
 Though there are numerous tutorials on PyTorch out there, I wanted to compose a little post for individuals who may wind up utilizing the TMVA PyTorch Interface. I also want to draw some contrasts, defining distinctions between Keras and PyTorch interfaces in TMVA.
 
-PyTorch is a Python-based scientific computing package supporting a​utomatic differentiation.​ An ​open source machine learning​ framework that accelerates the path from research prototyping to production deployment. ​A research platform that provides maximum flexibility​ and s​ peed.
+PyTorch is a Python-based scientific package supporting a​utomatic differentiation.​ An ​open-source machine learning​ framework that accelerates the path from research prototyping to production deployment. ​A research platform that provides maximum flexibility​ and s​peed.
 
 <img alt="Can't See? Something went wrong!" src="{{site.baseurl}}/images/Keras-or-PyTorch.png" width="80%">
 
-Both the frameworks are really useful in their own ways. For your daily machine learning models, you can achieve similar results with any of the two.
+Both the frameworks are really useful in their own myriad ways. For your daily machine learning models, you can achieve similar results with either of the two.
 
-Keras shines especially with it's super simple high-level tensorflow API. It may be easier to get into and experiment with standard layers. If your work involves some simple experiments, Keras maybe the goto framework due to its plug & play spirit. 
+Keras shines especially with it's simple high-level tensorflow API. It may be easier to get into and experiment with standard layers. If your work involves some elementary experiments, Keras maybe the goto framework due to its plug & play spirit. 
 
-But, things get interesting when one requires low level control and flexibility. That's when the argument for Keras starts losing water. PyTorch on the other hand is amazing in terms of control, flexibility and raw power that it can provide to the user. PyTorch offers a lower-level approach for the more mathematically-inclined users.
+But things get interesting when one requires low level control and flexibility. That's when the argument for Keras starts losing water. PyTorch on the other hand is amazing in terms of control, flexibility and raw power that it can provide to the user. It's lower-level approach is better suited for the more mathematically-inclined users.
 
-PyTorch is widely used​ among researchers and hence has a large community around it continuously pushing the state of the art developements and advancements into the framework.
+PyTorch is widely used​ among researchers and hence has a large community around it continuously improving the framework with state of the art developements.
 
 **Need for PyTorch Interface?**
 
-● Allows to combine ROOT, which is good at handling HEP data and PyTorch which can be used for Deep Learning needs.
+● **ROOT + PyTorch**: Allows to integrate ROOT methods which are good at handling HEP data and PyTorch which can be useful for Machine Learning.
 
 ● **Power & Flexibility**: ​Not easy to develop using TMVA, as they require complex configuration strings. Even with PyKeras Interface, designing custom layers is not feasible. PyTorch offers the power and flexibility to achieve complex models with custom layers, optimizers, loss functions and training methodologies.
 
@@ -32,10 +32,11 @@ PyTorch is widely used​ among researchers and hence has a large community arou
 
 ● **Performance**: PyTorch performs much better than Keras due to it's highly optimized C++ backend.
 
+<hr/>
 
 ### Defining Models in PyTorch
 
-Below I'm sharing a few options which can be employed to define models in pytorch based on the requirement. As mentioned earlier the customizations possible here are limited to your imagination.
+Below I’ve shared a few options which can be employed to define models in PyTorch based on the requirement. As mentioned earlier the customisations possible here are only limited by our imaginations.
 
 ```python
 import torch
@@ -93,20 +94,18 @@ model = torch.nn.Sequqntial(
 ```
 
 
-Anyways to develop our interface we need the ability to store a defined model into a file which can be later loaded into the TMVA C++ backend when Booking and Training the models.
+To develop our interface we need the ability to store a defined model into a file which can be later loaded into the TMVA C++ backend when Booking and Training the models.
 
-While `model.save()` in keras saves the whole model in `.hdf5` file along with other information, in PyTorch, one can achieve similar functionality using `torch.save()`. The issue here is that before we load back the model into memory from the saved file, it requires you to define the model class again. `torch.save` inputs a dictionary to save only the model parameters and other learnable parameters (optimizers state etc.) or variables like `current_epoch`. Though that is neat, we require our model to be completely stored in a file which can be later used without any knowledge of model definition.
+While `model.save()` in keras saves the whole model in `.hdf5` file along with other information, in PyTorch, one can achieve similar functionality using `torch.save()`. The issue here is that before we load back the model into memory from the saved file, it requires you to define the model class again. `torch.save` inputs a dictionary to save only the model parameters and other learnable parameters (optimizers state etc.) or variables like `current_epoch`. Though that is neat, we require our model to be completely stored in a file which can be used later without any knowledge of model definition.
 
 **Enter torchscript!**
 
-TorchScript is a way to create serializable and optimizable models from PyTorch code. Any TorchScript program can be saved from a Python process and loaded in a process where there is no Python dependency.
+TorchScript is a method to create serializable and optimizable models from PyTorch code. Any TorchScript program can be saved from a Python process and loaded in a process where there is no Python dependency.
 
-PyTorch provides tools to incrementally transition a model from a pure Python program to a TorchScript program that can be run independently from Python, such as in a standalone C++ program. This makes it possible to train models in PyTorch using familiar tools in Python and then export the model via TorchScript to different environment where Python programs may be disadvantageous.
+PyTorch provides tools to incrementally transition a model from a pure Python program to a TorchScript program that can be run independently from Python, such as in a standalone C++ program. This makes it possible to train models in PyTorch using familiar tools in Python and then export the model via TorchScript to a different environment where Python programs may be disadvantageous.
 
-Though torchscript, we can serialize and save the model which can be later loaded into the TMVA c++ backend from a stand-alone `.pt` file.
+Through torchscript, we can serialize and save the model which can be later loaded into the TMVA C++ backend from a stand-alone `.pt` file.
 
-Anyways, this was supposed to be a short post on torch and torchscript.
-I'll be ending this now. There will be a more detailed post discussing the details of the internals and design choices made for the TMVA PyTorch Interface.
+There will be a more detailed post discussing the details of the internals and design choices made for the TMVA PyTorch Interface.
 
 Bbye for now!
-

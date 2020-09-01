@@ -14,9 +14,9 @@ Using python’s easy interface is fun!
 <img alt="Can't See? Something went wrong!" src="{{site.baseurl}}/images/python_flying.jpg">
 
 
-It is as much fun developing the interface for that too! Or is it??
+It is as much fun developing the interface for that too! Or is it?
 
-It’s often not. It’s not easy to write efficient and robust modules in python. It’s easy to see why. While a lot of modules can be implemented in pure python, they often lag in performance. If all you care about is performance from your code, one option is to simply write code in a low level language like C++ and use it in other C++ modules. But, it’s really painful to go back to doing everything in C++ when your cool machine learning friends are using magical python libraries (I mean PyTorch :p). After using python for a while, you know how simple, powerful and flexible it is, meeting all your Machine Learning requirements. Threre is little reason to go back.
+It’s often not. It’s not easy to write efficient and robust modules in python. It’s easy to see why. While a lot of modules can be implemented in pure python, they often lag in performance. If all you care about is performance from your code, one option is to simply write code in a low level language like C++ and use it in other C++ modules. But, it’s really painful to go back to doing everything in C++ when your cool machine learning friends are using magical python libraries (I mean PyTorch :p). After using python for a while, you know how simple, powerful, and flexible it is, meeting all your Machine Learning requirements. There is little reason to go back.
 
 For High Energy Physics, the go-to framework for big data analysis has been CERN’s ROOT framework. ROOT is a massive C++ library that even predates the STL in some areas. ROOT has a sub-module, TMVA, which houses the machine learning framework specifically developed for HEP data.  
 
@@ -27,7 +27,7 @@ But when you are a Python developer with a C or C++ library, you’d like to use
 
 ## Python Bindings
 
-Python bindings allow you to call functions and pass data from Python to C or C++, letting you take advantage of the strengths of both languages. This is especially important, you’ll see an overview of some of the tools you can use to create Python bindings. Almost all the scientefic packages that you may have used in Python are developed in C++. A few examples are numpy, pandas, pytorch. Numpy, for example, achieves a lot of its performance by carefully managing (and reusing) memory, and calling it from Python avoids the garbage collection overheads of writing the same functions in Python.
+Python bindings allow you to call functions and pass data from Python to C or C++, letting you take advantage of the strengths of both languages. Almost all the scientific packages that you may have used in Python are developed in C++. A few examples are Numpy, Pandas, PyTorch. Numpy, for example, achieves a lot of its performance by carefully managing (and reusing) memory, and calling it from Python avoids the garbage collection overheads of writing the same functions in Python.
 
 There are many slick tools and solutions for developing the python bindings, and if you are interested, I'd reccomend reading [this](https://iscinumpy.gitlab.io/post/tools-to-bind-to-python/) awesome blog by [Henry Schreiner](https://iscinumpy.gitlab.io/page/about/) explaining various binding tools in detail. 
 
@@ -70,7 +70,7 @@ Later, when it is time to call the function, you call either of the following C 
 
 * [`PyObject_CallMethodObjArgs()`](https://docs.python.org/3/c-api/object.html#c.PyObject_CallMethodObjArgs) : Calls a method of the Python object *obj*, where the name of the method is given as a Python string object in name. It is called with a variable number of `PyObject*` arguments. The arguments are provided as a variable number of parameters followed by `NULL`.
 
-These functions on execution return a Python object pointer: this is the return value of the Python function. 
+These functions on execution return a Python object pointer, this is the return value of the Python function. 
 
 <hr/>
 
