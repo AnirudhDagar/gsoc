@@ -131,7 +131,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      3 min read
     
 </span></p>
 
@@ -155,39 +155,62 @@ window.onload = wrap_img;
   <div class="post-content e-content" itemprop="articleBody">
     <p><img alt="Can't See? Something went wrong!" src="/gsoc/images/who-handles-what.png" /></p>
 
-<h3 id="tmva-pytorch-interface-structure">TMVA PyTorch Interface Structure</h3>
+<p><br /></p>
 
-<h3 id="how-does-it-interface">How does it interface?</h3>
+<p>This post is intended to focus on the internals of the TMVA PyTorch interface and I’ll be discussing the details and design choices made. As can be seen in the figure above, the workforce for various tasks is divided clearly between the two frameworks. We define the model, optimizer, loss criterion and the training/prediction loop within PyTorch. On the other hand TMVA handles all the preprocessing, Dataloading, validation and evaluation.</p>
 
-<h2 id="train">Train</h2>
+<blockquote>
+  <p><strong>Tip</strong>: You may want to refer to the source code for TMVA PyTorch Interface while following this blog.</p>
+</blockquote>
 
-<pre><code class="language-C"> void MethodPyTorch::Train() {
-  
-	/* Setup parameters
+<hr />
 
-	* Setup training alternatives to callbacks like keras
+<h3 id="declareoptions">DeclareOptions</h3>
 
-	* Store trained model to file (only if option 'SaveBestOnly' is NOT activated,
-	* as we do not want to override the best model checkpoint)
+<p>We provide a few useful options to the user for deciding the necessary and optional arguments. These involve the information required for training a pytorch model.</p>
 
-	* Load PyTorch (torchscript) model from checkpoint .tar file or .pt/.pth file
-	* Load initial model or already trained model
+<pre><code class="language-C">void MethodPyTorch::DeclareOptions() {
+	/*
+	 * fFilenameModel : Filename of the initial PyTorch model");
 
-	* Start model training
+	 * fFilenameTrainedModel : Filename of the trained output PyTorch model");
 
-	*/
- 
+	 * fBatchSize : Training batch size
+
+	 * fNumEpochs : Number of training epochs
+
+	 * fContinueTraining : Load weights from previous training
+
+	 * fSaveBestOnly : Store only weights with smallest validation loss
+
+	 * fLearningRateSchedule : Set new learning rate at specific epochs
+	                           e.g., \"50,0.01;70,0.005\""
+
+	 * fNumValidationString : Part of the training data to use for validation."
+                    Specify as 0.2 or 20% to use a fifth of the data set as validation set
+                    Specify as 100 to use exactly 100 events. (Default: 20%)
+
+	 * fUserCodeName : Necessary python code provided by the user to be executed 
+     				   before loading and training the PyTorch Model
+
+	 */
 }
 </code></pre>
 
-<h2 id="setuptorchmodel">SetupTorchModel</h2>
+<hr />
+
+<h3 id="setuptorchmodel">SetupTorchModel</h3>
+
+<p>Here we set-up the pytorch specific code by utilizing the user code from the dictionary <code class="highlighter-rouge">load_model_custom_objects</code> and load the saved model from the <code class="highlighter-rouge">.pt</code> file. We initialize these function objects which will be required later during prediction and training.</p>
 
 <pre><code class="language-C">void MethodPyTorch::SetupTorchModel(bool loadTrainedModel) {
 	// Load initial model or already trained model
 	  
-	/* Load pytorch model from file
+	/* Execute user code 
 
-	* Load pytorch user code methods
+	* Load pytorch model from file
+
+	* Load pytorch user code function objects
 	         * Optimizer
 	         * Loss Criterion
 	         * Train Method
@@ -196,20 +219,53 @@ window.onload = wrap_img;
 	* load_model_custom_objects = {"optimizer": optimizer, "criterion":
 	                criterion, "train_func": fit, "predict_func": predict}
 
-	* Init variables and weights
+	* Initialize variables and weights
 
 	*/
 }
 </code></pre>
 
-<h3 id="function-loading">Function Loading</h3>
+<hr />
 
-<h3 id="callbacks">Callbacks</h3>
+<h3 id="train">Train</h3>
 
-<h3 id="model-saving-loading">Model Saving Loading</h3>
+<p>Here we prepare the training process starting with loading the training data into numpy arrays and building the PyTorch Dataloader from these arrays. <code class="highlighter-rouge">GetAnalysisType()</code> provides us with the type of analysis which is used to fill targets.</p>
 
-<h2 id="use-of-custom-python-functions-in-tmva">Use of custom Python functions in TMVA</h2>
+<p>For Example:</p>
 
+<p><code class="highlighter-rouge">if GetAnalysisType() == Types::kClassification || GetAnalysisType() == Types::kMulticlass</code>, then, convert class number to one-hot vectors.</p>
+
+<p>Once the training and validation dataloaders are ready, we proceed towards setting up optional training tricks like the <em>learning rate scheduler</em> or the option to <em>save best model</em>.</p>
+
+<p>Now the <code class="highlighter-rouge">train_func</code> defined in the <code class="highlighter-rouge">load_model_custom_objects</code> dictionary is used to invoke the function call and initiate the training process.</p>
+
+<p>The trained model is returned and is saved if and only if the <em>save best model</em> option is switched off because we do not want to override the best model checkpoint by saving again.</p>
+
+<p>Finally, all the memory is freed by deleting the defined data arrays.</p>
+
+<pre><code class="language-C"> void MethodPyTorch::Train() {
+  
+	/* Setup parameters
+
+	* Setup Dataloader and conversion to torch DataLoader
+
+	* Setup training callbacks like keras
+
+	* Store trained model to file (only if option 'SaveBestOnly' is NOT activated,
+	  as we do not want to override the best model checkpoint)
+
+	* Load PyTorch (torchscript) model from checkpoint .tar file or .pt/.pth file
+	  Load initial model or already trained model
+
+	* Start model training
+
+	*/
+ 
+}
+</code></pre>
+
+<p>These were the 3 main methods required for training a pytorch model leveraging the PyMVA Interface.
+Methods to call the <code class="highlighter-rouge">predict_func</code> and carry on evaluation are also implemented within the interface, but for the sake of simplicity we’ll skip them from this post. One can take a look at the source code to get a better understanding of how these work.</p>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"

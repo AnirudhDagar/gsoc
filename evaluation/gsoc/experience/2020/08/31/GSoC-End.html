@@ -153,21 +153,39 @@ window.onload = wrap_img;
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <blockquote>
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#journey">Journey</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#pull-requests">Pull Requests</a></li>
+<li class="toc-entry toc-h2"><a href="#deliverables-achieved">Deliverables Achieved</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#source">Source</a></li>
+<li class="toc-entry toc-h3"><a href="#tests">Tests</a></li>
+<li class="toc-entry toc-h3"><a href="#tutorials">Tutorials</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+</ul><blockquote>
   <p>TLDR: It feels unbelievable to have contributed to CERN as a GSoC student. My contributions can be found at <a href="https://github.com/root-project/root/pull/5757">#5757</a> and <a href="https://github.com/root-project/root/pull/6273">#6273</a>.</p>
 </blockquote>
 
-<p><img alt="Can't See? Something went wrong!" src="/gsoc/images/gsoc_final_remarks.jpg" width="60%" /></p>
+<p><img alt="Can't See? Something went wrong!" src="/gsoc/images/gsoc_final_remarks.jpg" width="60%"></p>
 
-<p>Summer of 2020 has been nothing short of a roller-coaster ride filled with challenges and obstacles. I feel a sense of achievement, looking back at the work I managed to complete while hitting my goals and targets in these trying times. Ever since my first pull request got merged, I have been longing to create an impact with open source contributions. Thanks to CERN-HSF and Google Summer Of Code for providing me an opportunity to work on the <strong>ROOT TMVA</strong> framework which provides a machine learning environment for the modelling, processing and evaluation of high-energy physics data.</p>
+<h1 id="journey">
+<a class="anchor" href="#journey" aria-hidden="true"><span class="octicon octicon-link"></span></a>Journey</h1>
 
-<p>Let us see what I have done this summer.</p>
+<p>Summer of 2020 has been nothing short of a roller-coaster ride filled with challenges and obstacles. I feel a sense of achievement looking back at the work I managed to complete while hitting my goals and targets in these trying times. Ever since my first pull request got merged, I have been longing to create an impact with open-source contributions. Thanks to CERN-HSF and Google Summer Of Code for providing me an opportunity to work on the <strong>ROOT TMVA</strong> framework which provides a machine learning environment for the modelling, processing, and evaluation of high-energy physics data.</p>
+
+<p>Let me take you through the work I’ve carried out this summer.</p>
 
 <p>During these three months, I developed a PyTorch Interface for TMVA. Hopefully, users and developers will utilize the newest addition to the TMVA family.</p>
 
-<hr />
+<hr>
 
-<h3 id="pull-requests-made">Pull Requests Made:</h3>
+<h2 id="pull-requests">
+<a class="anchor" href="#pull-requests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pull Requests</h2>
 
 <p><strong>[Major]</strong></p>
 
@@ -191,90 +209,138 @@ window.onload = wrap_img;
   </li>
 </ul>
 
-<hr />
+<hr>
 
-<h1 id="deliverables-achieved">Deliverables Achieved</h1>
+<h2 id="deliverables-achieved">
+<a class="anchor" href="#deliverables-achieved" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deliverables Achieved</h2>
 
-<h3 id="header-methodpytorch">Header MethodPyTorch</h3>
+<h3 id="source">
+<a class="anchor" href="#source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source</h3>
 
-<ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implementation of <code class="highlighter-rouge">MethodPyTorch.h</code> header.</li>
-</ul>
-
-<h3 id="class-methodpytorch">Class MethodPyTorch</h3>
+<p><strong>Header MethodPyTorch</strong></p>
 
 <ul class="task-list">
   <li class="task-list-item">
-    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implementation of <code class="highlighter-rouge">MethodPyTorch.cxx</code> class.</p>
-
-    <ul class="task-list">
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implement the <code class="highlighter-rouge">DeclareOptions</code> method</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implement <code class="highlighter-rouge">ProcessOptions</code> methods</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implement <code class="highlighter-rouge">SetupTorchModel</code> method</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implement train methods
-        <ul class="task-list">
-          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implement simple basic structure for training</li>
-          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add ability to load code from users</li>
-          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Convert numpy based dataloaders in TMVA to PyTorch dataloaders</li>
-          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Use default (optional optimizer SGD)</li>
-          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add callbacks: savebest model, scheduler etc</li>
-        </ul>
-      </li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implement <code class="highlighter-rouge">GetNumValidationSamples</code></li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implement Validation in <code class="highlighter-rouge">train_func</code></li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add model prediction function loading ability</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implementation of the <code class="highlighter-rouge">GetMVA*</code>
-        <ul class="task-list">
-          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><code class="highlighter-rouge">GetMvaValues</code> method for Classification</li>
-          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><code class="highlighter-rouge">GetRegressionValues</code> method for Regression</li>
-          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><code class="highlighter-rouge">GetMulticlassValues</code> method for MultiClass Classification.</li>
-        </ul>
-      </li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Implement helper function</li>
-    </ul>
-  </li>
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Implementation of <code class="highlighter-rouge">MethodPyTorch.h</code> header.</li>
 </ul>
 
-<h3 id="tests">Tests</h3>
+<p><strong>Class MethodPyTorch</strong></p>
+
 <ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add testPyTorchClassification.C
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled checked>Implementation of <code class="highlighter-rouge">MethodPyTorch.cxx</code> class.</p>
+
     <ul class="task-list">
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add generatePyTorchModelClassification.py</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Load, Train model and test all the parameter arguments</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Verify response after model prediction function is added.</li>
-    </ul>
-  </li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add testPyTorchMulticlass.C
-    <ul class="task-list">
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add generatePyTorchModelMulticlass.py</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Load, Train model and test all the parameter arguments</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Verify response after model prediction function is added.</li>
-    </ul>
-  </li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add testPyTorchRegression.C
-    <ul class="task-list">
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add generatePyTorchModelRegression.py</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Load, Train model and test all the parameter arguments</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Verify response after model prediction function is added.</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Implement the <code class="highlighter-rouge">DeclareOptions</code> method</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Implement <code class="highlighter-rouge">ProcessOptions</code> methods</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Implement <code class="highlighter-rouge">SetupTorchModel</code> method</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Implement train methods
+        <ul class="task-list">
+          <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Implement simple basic structure for training</li>
+          <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add ability to load code from users</li>
+          <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Convert numpy based dataloaders in TMVA to PyTorch dataloaders</li>
+          <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Use default (optional optimizer SGD)</li>
+          <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add callbacks: savebest model, scheduler etc</li>
+        </ul>
+      </li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Implement <code class="highlighter-rouge">GetNumValidationSamples</code>
+</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Implement Validation in <code class="highlighter-rouge">train_func</code>
+</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add model prediction function loading ability</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Implementation of the <code class="highlighter-rouge">GetMVA*</code>
+        <ul class="task-list">
+          <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="highlighter-rouge">GetMvaValues</code> method for Classification</li>
+          <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="highlighter-rouge">GetRegressionValues</code> method for Regression</li>
+          <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="highlighter-rouge">GetMulticlassValues</code> method for MultiClass Classification.</li>
+        </ul>
+      </li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Implement helper function</li>
     </ul>
   </li>
 </ul>
 
-<h3 id="tutorials">Tutorials</h3>
+<h3 id="tests">
+<a class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h3>
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add testPyTorchClassification.C
+    <ul class="task-list">
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add generatePyTorchModelClassification.py</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Load, Train model and test all the parameter arguments</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Verify response after model prediction function is added.</li>
+    </ul>
+  </li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add testPyTorchMulticlass.C
+    <ul class="task-list">
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add generatePyTorchModelMulticlass.py</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Load, Train model and test all the parameter arguments</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Verify response after model prediction function is added.</li>
+    </ul>
+  </li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add testPyTorchRegression.C
+    <ul class="task-list">
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add generatePyTorchModelRegression.py</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Load, Train model and test all the parameter arguments</li>
+      <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Verify response after model prediction function is added.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="tutorials">
+<a class="anchor" href="#tutorials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tutorials</h3>
 
 <p>Made a blog post <a href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html">here</a></p>
 
 <p>Also the tutorials are implemented in <a href="https://github.com/root-project/root/pull/6273">#6273</a></p>
 
 <ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add TMVA ClassificationPyTorch</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add TMVA RegressionPyTorch</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add TMVA MulticlassPyTorch</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add TMVA ApplicationRegressionPyTorch</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Add TMVA ApplicationClassificationPyTorch</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add TMVA ClassificationPyTorch</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add TMVA RegressionPyTorch</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add TMVA MulticlassPyTorch</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add TMVA ApplicationRegressionPyTorch</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>Add TMVA ApplicationClassificationPyTorch</li>
 </ul>
 
-<h2 id="acknowledgements">Acknowledgements</h2>
+<p><br></p>
+
+<hr>
+
+<h2 id="acknowledgements">
+<a class="anchor" href="#acknowledgements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Acknowledgements</h2>
 
 <p>I am grateful to my mentors for their invaluable guidance and support throughout my GSoC journey. ❤️</p>
 
@@ -287,10 +353,13 @@ window.onload = wrap_img;
   </li>
 </ul>
 
-<p>Thankyou for believing in me. I honestly never thought I would have the chance to get in, or even be accepted, at one of the finest research organizations in the world. Hoping that my contributions may help in discovering the next Higgs Boson! 💥</p>
+<p>Thank you for believing in me. I honestly never thought I would have the chance to get in, or even be accepted, at one of the finest research organizations in the world. Hoping that my contributions may facilitate in the discovery of the next Higgs Boson! 💥</p>
 
-<p>Signing Off!!!</p>
+<p><br>
+<br>
+Signing Off,</p>
 
+<p>Anirudh Dagar</p>
 
   </div><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
