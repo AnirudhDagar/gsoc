@@ -8,30 +8,36 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>GSoC | Anirudh Dagar’s GSoC 2020 Blog @ CERN-HSF</title>
+<title>Internals: TMVA PyTorch Interface | GSoC</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="GSoC" />
+<meta property="og:title" content="Internals: TMVA PyTorch Interface" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Anirudh Dagar’s GSoC 2020 Blog @ CERN-HSF" />
-<meta property="og:description" content="Anirudh Dagar’s GSoC 2020 Blog @ CERN-HSF" />
-<link rel="canonical" href="https://anirudhdagar.github.io/gsoc/404.html" />
-<meta property="og:url" content="https://anirudhdagar.github.io/gsoc/404.html" />
+<meta name="description" content="Structural working of the TMVA PyTorch Interface" />
+<meta property="og:description" content="Structural working of the TMVA PyTorch Interface" />
+<link rel="canonical" href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html" />
+<meta property="og:url" content="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html" />
 <meta property="og:site_name" content="GSoC" />
+<meta property="og:image" content="https://anirudhdagar.github.io/gsoc/images/who-handles-what.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-22T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"Anirudh Dagar’s GSoC 2020 Blog @ CERN-HSF","@type":"WebPage","url":"https://anirudhdagar.github.io/gsoc/404.html","headline":"GSoC","@context":"https://schema.org"}</script>
+{"description":"Structural working of the TMVA PyTorch Interface","@type":"BlogPosting","url":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html","dateModified":"2020-07-22T00:00:00-05:00","datePublished":"2020-07-22T00:00:00-05:00","headline":"Internals: TMVA PyTorch Interface","image":"https://anirudhdagar.github.io/gsoc/images/who-handles-what.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/gsoc/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://anirudhdagar.github.io/gsoc/feed.xml" title="GSoC" /><link rel="shortcut icon" type="image/x-icon" href="/gsoc/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>GSoC | Anirudh Dagar’s GSoC 2020 Blog @ CERN-HSF</title>
+<title>Internals: TMVA PyTorch Interface | GSoC</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="GSoC" />
+<meta property="og:title" content="Internals: TMVA PyTorch Interface" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Anirudh Dagar’s GSoC 2020 Blog @ CERN-HSF" />
-<meta property="og:description" content="Anirudh Dagar’s GSoC 2020 Blog @ CERN-HSF" />
-<link rel="canonical" href="https://anirudhdagar.github.io/gsoc/404.html" />
-<meta property="og:url" content="https://anirudhdagar.github.io/gsoc/404.html" />
+<meta name="description" content="Structural working of the TMVA PyTorch Interface" />
+<meta property="og:description" content="Structural working of the TMVA PyTorch Interface" />
+<link rel="canonical" href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html" />
+<meta property="og:url" content="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html" />
 <meta property="og:site_name" content="GSoC" />
+<meta property="og:image" content="https://anirudhdagar.github.io/gsoc/images/who-handles-what.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-22T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"Anirudh Dagar’s GSoC 2020 Blog @ CERN-HSF","@type":"WebPage","url":"https://anirudhdagar.github.io/gsoc/404.html","headline":"GSoC","@context":"https://schema.org"}</script>
+{"description":"Structural working of the TMVA PyTorch Interface","@type":"BlogPosting","url":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html","dateModified":"2020-07-22T00:00:00-05:00","datePublished":"2020-07-22T00:00:00-05:00","headline":"Internals: TMVA PyTorch Interface","image":"https://anirudhdagar.github.io/gsoc/images/who-handles-what.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -116,26 +122,105 @@ window.onload = wrap_img;
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Internals: TMVA PyTorch Interface</h1><p class="page-description">Structural working of the TMVA PyTorch Interface</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-22T00:00:00-05:00" itemprop="datePublished">
+        Jul 22, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
 
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/gsoc/categories/#tmva">tmva</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/gsoc/categories/#pytorch">pytorch</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/gsoc/categories/#torchscript">torchscript</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><img alt="Can't See? Something went wrong!" src="/gsoc/images/who-handles-what.png" /></p>
+
+<h3 id="tmva-pytorch-interface-structure">TMVA PyTorch Interface Structure</h3>
+
+<h3 id="how-does-it-interface">How does it interface?</h3>
+
+<h2 id="train">Train</h2>
+
+<pre><code class="language-C"> void MethodPyTorch::Train() {
+  
+	/* Setup parameters
+
+	* Setup training alternatives to callbacks like keras
+
+	* Store trained model to file (only if option 'SaveBestOnly' is NOT activated,
+	* as we do not want to override the best model checkpoint)
+
+	* Load PyTorch (torchscript) model from checkpoint .tar file or .pt/.pth file
+	* Load initial model or already trained model
+
+	* Start model training
+
+	*/
+ 
+}
+</code></pre>
+
+<h2 id="setuptorchmodel">SetupTorchModel</h2>
+
+<pre><code class="language-C">void MethodPyTorch::SetupTorchModel(bool loadTrainedModel) {
+	// Load initial model or already trained model
+	  
+	/* Load pytorch model from file
+
+	* Load pytorch user code methods
+	         * Optimizer
+	         * Loss Criterion
+	         * Train Method
+	         * Predict Method
+
+	* load_model_custom_objects = {"optimizer": optimizer, "criterion":
+	                criterion, "train_func": fit, "predict_func": predict}
+
+	* Init variables and weights
+
+	*/
+}
+</code></pre>
+
+<h3 id="function-loading">Function Loading</h3>
+
+<h3 id="callbacks">Callbacks</h3>
+
+<h3 id="model-saving-loading">Model Saving Loading</h3>
+
+<h2 id="use-of-custom-python-functions-in-tmva">Use of custom Python functions in TMVA</h2>
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="AnirudhDagar/gsoc"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/gsoc/tmva/pytorch/torchscript/2020/07/22/Internals-TMVA-PyTorch-Interface.html" hidden></a>
+</article>
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/gsoc/"></data>

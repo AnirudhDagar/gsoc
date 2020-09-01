@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  
+  <!-- Added by Anirudh Dagar on 8th May -->
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Python C API &amp; PyMVA | GSoC</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Python C API &amp; PyMVA" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Understanding Python bindings and PyMVA in ROOT" />
+<meta property="og:description" content="Understanding Python bindings and PyMVA in ROOT" />
+<link rel="canonical" href="https://anirudhdagar.github.io/gsoc/c/python/tmva/interface/2020/07/08/PyMVA-Python-C-API.html" />
+<meta property="og:url" content="https://anirudhdagar.github.io/gsoc/c/python/tmva/interface/2020/07/08/PyMVA-Python-C-API.html" />
+<meta property="og:site_name" content="GSoC" />
+<meta property="og:image" content="https://www.python.org/static/img/python-logo@2x.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-08T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Understanding Python bindings and PyMVA in ROOT","@type":"BlogPosting","url":"https://anirudhdagar.github.io/gsoc/c/python/tmva/interface/2020/07/08/PyMVA-Python-C-API.html","dateModified":"2020-07-08T00:00:00-05:00","datePublished":"2020-07-08T00:00:00-05:00","headline":"Python C API &amp; PyMVA","image":"https://www.python.org/static/img/python-logo@2x.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://anirudhdagar.github.io/gsoc/c/python/tmva/interface/2020/07/08/PyMVA-Python-C-API.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/gsoc/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://anirudhdagar.github.io/gsoc/feed.xml" title="GSoC" /><link rel="shortcut icon" type="image/x-icon" href="/gsoc/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Python C API &amp; PyMVA | GSoC</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Python C API &amp; PyMVA" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Understanding Python bindings and PyMVA in ROOT" />
+<meta property="og:description" content="Understanding Python bindings and PyMVA in ROOT" />
+<link rel="canonical" href="https://anirudhdagar.github.io/gsoc/c/python/tmva/interface/2020/07/08/PyMVA-Python-C-API.html" />
+<meta property="og:url" content="https://anirudhdagar.github.io/gsoc/c/python/tmva/interface/2020/07/08/PyMVA-Python-C-API.html" />
+<meta property="og:site_name" content="GSoC" />
+<meta property="og:image" content="https://www.python.org/static/img/python-logo@2x.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-08T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Understanding Python bindings and PyMVA in ROOT","@type":"BlogPosting","url":"https://anirudhdagar.github.io/gsoc/c/python/tmva/interface/2020/07/08/PyMVA-Python-C-API.html","dateModified":"2020-07-08T00:00:00-05:00","datePublished":"2020-07-08T00:00:00-05:00","headline":"Python C API &amp; PyMVA","image":"https://www.python.org/static/img/python-logo@2x.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://anirudhdagar.github.io/gsoc/c/python/tmva/interface/2020/07/08/PyMVA-Python-C-API.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://anirudhdagar.github.io/gsoc/feed.xml" title="GSoC" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+<script type="text/javascript">
+require.config({
+  paths: {
+    jquery: 'https://code.jquery.com/jquery-3.5.0.min',
+    plotly: 'https://cdn.plot.ly/plotly-latest.min'
+  },
+
+  shim: {
+    plotly: {
+      deps: ['jquery'],
+      exports: 'plotly'
+    }
+  }
+});
+</script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/gsoc/">GSoC</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/gsoc/about/">About Me</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Python C API &amp; PyMVA</h1><p class="page-description">Understanding Python bindings and PyMVA in ROOT</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-08T00:00:00-05:00" itemprop="datePublished">
+        Jul 8, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/gsoc/categories/#C">C</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/gsoc/categories/#Python">Python</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/gsoc/categories/#TMVA">TMVA</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/gsoc/categories/#Interface">Interface</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Using python’s easy interface is fun!</p>
+
+<p><img alt="Can't See? Something went wrong!" src="/gsoc/images/python_flying.jpg" /></p>
+
+<p>It is as much fun developing the interface for that too! Or is it??</p>
+
+<p>It’s often not. It’s not easy to write efficient and robust modules in python. It’s easy to see why. While a lot of modules can be implemented in pure python, they often lag in performance. If all you care about is performance from your code, one option is to simply write code in a low level language like C++ and use it in other C++ modules. But, it’s really painful to go back to doing everything in C++ when your cool machine learning friends are using magical python libraries (I mean PyTorch :p). After using python for a while, you know how simple, powerful and flexible it is, meeting all your Machine Learning requirements. Threre is little reason to go back.</p>
+
+<p>For High Energy Physics, the go-to framework for big data analysis has been CERN’s ROOT framework. ROOT is a massive C++ library that even predates the STL in some areas. ROOT has a sub-module, TMVA, which houses the machine learning framework specifically developed for HEP data.</p>
+
+<p>But when you are a Python developer with a C or C++ library, you’d like to use that from Python too!</p>
+
+<hr />
+
+<h2 id="python-bindings">Python Bindings</h2>
+
+<p>Python bindings allow you to call functions and pass data from Python to C or C++, letting you take advantage of the strengths of both languages. This is especially important, you’ll see an overview of some of the tools you can use to create Python bindings. Almost all the scientefic packages that you may have used in Python are developed in C++. A few examples are numpy, pandas, pytorch. Numpy, for example, achieves a lot of its performance by carefully managing (and reusing) memory, and calling it from Python avoids the garbage collection overheads of writing the same functions in Python.</p>
+
+<p>There are many slick tools and solutions for developing the python bindings, and if you are interested, I’d reccomend reading <a href="https://iscinumpy.gitlab.io/post/tools-to-bind-to-python/">this</a> awesome blog by <a href="https://iscinumpy.gitlab.io/page/about/">Henry Schreiner</a> explaining various binding tools in detail.</p>
+
+<hr />
+
+<p>The Python API is incorporated in a C source file by including the header “Python.h”.</p>
+
+<pre><code class="language-C++">#include &lt;Python.h&gt;
+</code></pre>
+
+<p>This will import everything needed to extend Python with C. Everything in python is an object and is represented as <code class="highlighter-rouge">PyObject</code> here. That includes everything from <code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">str</code>, <code class="highlighter-rouge">list</code>, <code class="highlighter-rouge">dict</code> and <code class="highlighter-rouge">None</code> etc.</p>
+
+<p>All user-visible symbols defined by Python.h have a prefix of <code class="highlighter-rouge">Py</code> or <code class="highlighter-rouge">PY</code>, except those defined in standard header files.</p>
+
+<pre><code class="language-C++">Py_Initialize();
+</code></pre>
+<p>This initializes the python interpreter and is required for everything we do with our TMVA PyTorch Interface.</p>
+
+<p>If and when a function fails, it should set an exception condition and return an error value (usually a <code class="highlighter-rouge">NULL</code> pointer). Exceptions are stored in a static global variable inside the interpreter; if this variable is <code class="highlighter-rouge">NULL</code> no exception has occurred.</p>
+
+<p>Anyways in PyMVA we are intrigued with not only making C functions callable from Python, but, the inversion is additionally utilizable.</p>
+
+<h2 id="calling-python-functions-from-c">Calling Python functions from C</h2>
+
+<p>This is especially the case for the TMVA PyTorch Interface that requires PyTorch based functions from user. Other uses are also imaginable.</p>
+
+<p>Calling a Python function is relatively easy. First, the Python program must somehow pass you the Python function object. You should provide a function (or some other interface) to do this. It is generally a good practice to check the function object by <code class="highlighter-rouge">PyCallable_Check()</code>. Finally, when the function is called, save a pointer to the Python function object in a global variable — or wherever you see fit.</p>
+
+<p>Later, when it is time to call the function, you call either of the following C functions depending on the use:</p>
+
+<ul>
+  <li>
+    <p><a href="https://docs.python.org/3/c-api/object.html#c.PyObject_CallObject"><code class="highlighter-rouge">PyObject_CallObject()</code></a> : Call a callable Python object <em>callable</em>, with arguments given by the tuple args. If no arguments are needed, then args can be <code class="highlighter-rouge">NULL</code>.</p>
+  </li>
+  <li>
+    <p><a href="https://docs.python.org/3/c-api/object.html#c.PyObject_CallFunction"><code class="highlighter-rouge">PyObject_CallFunction()</code></a> : Call a callable Python object <em>callable</em>, with a variable number of C arguments. The C arguments are described using a <a href="https://docs.python.org/3/c-api/arg.html#c.Py_BuildValue"><code class="highlighter-rouge">Py_BuildValue()</code></a> style format string. The format can be <code class="highlighter-rouge">NULL</code>, indicating that no arguments are provided.</p>
+  </li>
+  <li>
+    <p><a href="https://docs.python.org/3/c-api/object.html#c.PyObject_CallMethod"><code class="highlighter-rouge">PyObject_CallMethod()</code></a> : Call the method named <em>name</em> of object obj with a variable number of C arguments. The C arguments are described by a <a href="https://docs.python.org/3/c-api/arg.html#c.Py_BuildValue"><code class="highlighter-rouge">Py_BuildValue()</code></a> format string that should produce a tuple.</p>
+  </li>
+  <li>
+    <p><a href="https://docs.python.org/3/c-api/object.html#c.PyObject_CallFunctionObjArgs"><code class="highlighter-rouge">PyObject_CallFunctionObjArgs()</code></a> : Call a callable Python object <em>callable</em>, with a variable number of <code class="highlighter-rouge">PyObject*</code> arguments. The arguments are provided as a variable number of parameters followed by <code class="highlighter-rouge">NULL</code>.</p>
+  </li>
+  <li>
+    <p><a href="https://docs.python.org/3/c-api/object.html#c.PyObject_CallMethodObjArgs"><code class="highlighter-rouge">PyObject_CallMethodObjArgs()</code></a> : Calls a method of the Python object <em>obj</em>, where the name of the method is given as a Python string object in name. It is called with a variable number of <code class="highlighter-rouge">PyObject*</code> arguments. The arguments are provided as a variable number of parameters followed by <code class="highlighter-rouge">NULL</code>.</p>
+  </li>
+</ul>
+
+<p>These functions on execution return a Python object pointer: this is the return value of the Python function.</p>
+
+<hr />
+
+<h2 id="root-pymva">ROOT PyMVA</h2>
+
+<p><img alt="Can't See? Something went wrong!" src="/gsoc/images/PyMVA_Data_Flow.png" align="right" width="60%" /></p>
+
+<p>PyMVA is a set of plugins for TMVA package based on Python that consists a set of classes that engage TMVA and allows new methods of classification and regression using external frameworks and modules.</p>
+
+<p><code class="highlighter-rouge">PyMethodBase</code> is the virtual base class for all PyMVA methods. It handles initialization of python interpreter, serialization, deserialization and has utilities for executing Python code in TMVA leveraging the C API for python discussed above.
+<code class="highlighter-rouge">PyMethodBase</code> is the backbone for all PyMVA methods. Our PyTorch Interface in TMVA (under development) is built on top of <strong>PyMVA</strong>, <code class="highlighter-rouge">PyMethodBase</code> particularly!</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="AnirudhDagar/gsoc"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/gsoc/c/python/tmva/interface/2020/07/08/PyMVA-Python-C-API.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/gsoc/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/gsoc/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/gsoc/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Anirudh Dagar&#39;s GSoC 2020 Blog @ CERN-HSF</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/anirudhdagar" title="anirudhdagar"><svg class="svg-icon grey"><use xlink:href="/gsoc/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/gollum_here" title="gollum_here"><svg class="svg-icon grey"><use xlink:href="/gsoc/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

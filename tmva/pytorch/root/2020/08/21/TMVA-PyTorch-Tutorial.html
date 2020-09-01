@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  
+  <!-- Added by Anirudh Dagar on 8th May -->
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tutorial: TMVA PyTorch Interface | GSoC</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Tutorial: TMVA PyTorch Interface" />
+<meta name="author" content="Anirudh Dagar" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Get started with TMVA PyTorch Interface. Combine the power of PyTorch &amp; ROOT!" />
+<meta property="og:description" content="Get started with TMVA PyTorch Interface. Combine the power of PyTorch &amp; ROOT!" />
+<link rel="canonical" href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html" />
+<meta property="og:url" content="https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html" />
+<meta property="og:site_name" content="GSoC" />
+<meta property="og:image" content="https://anirudhdagar.github.io/gsoc/images/tmva.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-21T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Anirudh Dagar"},"description":"Get started with TMVA PyTorch Interface. Combine the power of PyTorch &amp; ROOT!","@type":"BlogPosting","url":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html","dateModified":"2020-08-21T00:00:00-05:00","datePublished":"2020-08-21T00:00:00-05:00","headline":"Tutorial: TMVA PyTorch Interface","image":"https://anirudhdagar.github.io/gsoc/images/tmva.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/gsoc/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://anirudhdagar.github.io/gsoc/feed.xml" title="GSoC" /><link rel="shortcut icon" type="image/x-icon" href="/gsoc/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tutorial: TMVA PyTorch Interface | GSoC</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Tutorial: TMVA PyTorch Interface" />
+<meta name="author" content="Anirudh Dagar" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Get started with TMVA PyTorch Interface. Combine the power of PyTorch &amp; ROOT!" />
+<meta property="og:description" content="Get started with TMVA PyTorch Interface. Combine the power of PyTorch &amp; ROOT!" />
+<link rel="canonical" href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html" />
+<meta property="og:url" content="https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html" />
+<meta property="og:site_name" content="GSoC" />
+<meta property="og:image" content="https://anirudhdagar.github.io/gsoc/images/tmva.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-21T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Anirudh Dagar"},"description":"Get started with TMVA PyTorch Interface. Combine the power of PyTorch &amp; ROOT!","@type":"BlogPosting","url":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html","dateModified":"2020-08-21T00:00:00-05:00","datePublished":"2020-08-21T00:00:00-05:00","headline":"Tutorial: TMVA PyTorch Interface","image":"https://anirudhdagar.github.io/gsoc/images/tmva.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://anirudhdagar.github.io/gsoc/feed.xml" title="GSoC" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+<script type="text/javascript">
+require.config({
+  paths: {
+    jquery: 'https://code.jquery.com/jquery-3.5.0.min',
+    plotly: 'https://cdn.plot.ly/plotly-latest.min'
+  },
+
+  shim: {
+    plotly: {
+      deps: ['jquery'],
+      exports: 'plotly'
+    }
+  }
+});
+</script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/gsoc/">GSoC</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/gsoc/about/">About Me</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Tutorial: TMVA PyTorch Interface</h1><p class="page-description">Get started with TMVA PyTorch Interface. Combine the power of PyTorch & ROOT!</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-08-21T00:00:00-05:00" itemprop="datePublished">
+        Aug 21, 2020
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Anirudh Dagar</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      18 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/gsoc/categories/#tmva">tmva</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/gsoc/categories/#pytorch">pytorch</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/gsoc/categories/#root">root</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/AnirudhDagar/gsoc/tree/master/_notebooks/2020-08-21-TMVA-PyTorch-Tutorial.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/gsoc/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/AnirudhDagar/gsoc/master?filepath=_notebooks%2F2020-08-21-TMVA-PyTorch-Tutorial.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/gsoc/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/AnirudhDagar/gsoc/blob/master/_notebooks/2020-08-21-TMVA-PyTorch-Tutorial.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/gsoc/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h3"><a href="#Introduction">Introduction </a></li>
+<li class="toc-entry toc-h3"><a href="#Imports">Imports </a></li>
+<li class="toc-entry toc-h3"><a href="#Setup-TMVA">Setup TMVA </a></li>
+<li class="toc-entry toc-h3"><a href="#DataLoader">DataLoader </a></li>
+<li class="toc-entry toc-h3"><a href="#Generate-model">Generate model </a></li>
+<li class="toc-entry toc-h3"><a href="#Save-&-Store-model">Save &amp; Store model </a></li>
+<li class="toc-entry toc-h3"><a href="#Book-TMVA-methods">Book TMVA methods </a></li>
+<li class="toc-entry toc-h3"><a href="#Training">Training </a></li>
+<li class="toc-entry toc-h3"><a href="#Testing">Testing </a></li>
+<li class="toc-entry toc-h3"><a href="#Evaluation">Evaluation </a></li>
+<li class="toc-entry toc-h3"><a href="#Plots">Plots </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-08-21-TMVA-PyTorch-Tutorial.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Introduction">
+<a class="anchor" href="#Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction<a class="anchor-link" href="#Introduction"> </a>
+</h3>
+<p>This tutorial aims to walkthrough the latest addition in the <a href="https://github.com/root-project/root">ROOT TMVA</a> module, <strong>The PyTorch Interface!</strong> This is specifically designed to utilize the puissance of <a href="http://root.cern.ch/">ROOT</a> for working with high energy physics data, while leveraging the power and flexibility of the popular Machine Learning framework, PyTorch.</p>
+<p>The PyTorch interface allows HEP Scientists to be more ingenious with ideas and provides the ability to customize Machine Learning models to a far more preponderant extent than the Keras Interface.</p>
+<p>Here, we'll build a simple classifier in python using PyTorch and compare the performance to a few other methods on a test example root dataset. The same model can be achieved in C/C++ like other TMVA methods which are implemented in C/C++. You can follow <a href="https://github.com/root-project/root/tree/master/tmva/pymva/test/testPyTorchClassification.C">this</a> if you prefer a C++ implementation.</p>
+<h3 id="Imports">
+<a class="anchor" href="#Imports" aria-hidden="true"><span class="octicon octicon-link"></span></a>Imports<a class="anchor-link" href="#Imports"> </a>
+</h3>
+<p>We start with importing the necessary modules required for the tutorial</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ROOT</span> <span class="kn">import</span> <span class="n">TMVA</span><span class="p">,</span> <span class="n">TFile</span><span class="p">,</span> <span class="n">TTree</span><span class="p">,</span> <span class="n">TCut</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">isfile</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Welcome to JupyROOT 6.23/01
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Setup-TMVA">
+<a class="anchor" href="#Setup-TMVA" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup TMVA<a class="anchor-link" href="#Setup-TMVA"> </a>
+</h3>
+<p>TMVA requires initialization the PyMVA to utilize PyTorch. PyMVA is the interface for third-party MVA tools based on Python. It is created to make powerful external libraries easily accessible with a direct integration into the TMVA workflow. All PyMVA methods provide the same plug-and-play mechanisms as the TMVA methods. Because the base method of PyMVA is inherited from the TMVA base method, all options of internal TMVA methods apply for PyMVA methods as well.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TMVA</span><span class="o">.</span><span class="n">Tools</span><span class="o">.</span><span class="n">Instance</span><span class="p">()</span>
+<span class="n">TMVA</span><span class="o">.</span><span class="n">PyMethodBase</span><span class="o">.</span><span class="n">PyInitialize</span><span class="p">()</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">'TMVA.root'</span><span class="p">,</span> <span class="s1">'RECREATE'</span><span class="p">)</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">TMVA</span><span class="o">.</span><span class="n">Factory</span><span class="p">(</span><span class="s1">'TMVAClassification'</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span>
+                       <span class="s1">'!V:!Silent:Color:DrawProgressBar:'</span>
+                       <span class="s1">'Transformations=D,G:AnalysisType=Classification'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="DataLoader">
+<a class="anchor" href="#DataLoader" aria-hidden="true"><span class="octicon octicon-link"></span></a>DataLoader<a class="anchor-link" href="#DataLoader"> </a>
+</h3>
+<p>Below we start by downloading the dataset example dataset. The signal and background are loaded and read from the dataset. Finally we define our dataloader with options to help us control the split.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">isfile</span><span class="p">(</span><span class="s1">'tmva_class_example.root'</span><span class="p">):</span>
+    <span class="n">call</span><span class="p">([</span><span class="s1">'curl'</span><span class="p">,</span> <span class="s1">'-O'</span><span class="p">,</span> <span class="s1">'http://root.cern.ch/files/tmva_class_example.root'</span><span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">TFile</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">'tmva_class_example.root'</span><span class="p">)</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s1">'TreeS'</span><span class="p">)</span>
+<span class="n">background</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s1">'TreeB'</span><span class="p">)</span>
+
+<span class="n">dataloader</span> <span class="o">=</span> <span class="n">TMVA</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="s1">'dataset'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">signal</span><span class="o">.</span><span class="n">GetListOfBranches</span><span class="p">():</span>
+    <span class="n">dataloader</span><span class="o">.</span><span class="n">AddVariable</span><span class="p">(</span><span class="n">branch</span><span class="o">.</span><span class="n">GetName</span><span class="p">())</span>
+
+<span class="n">dataloader</span><span class="o">.</span><span class="n">AddSignalTree</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">dataloader</span><span class="o">.</span><span class="n">AddBackgroundTree</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">dataloader</span><span class="o">.</span><span class="n">PrepareTrainingAndTestTree</span><span class="p">(</span><span class="n">TCut</span><span class="p">(</span><span class="s1">''</span><span class="p">),</span>
+                                      <span class="s1">'nTrain_Signal=4000:'</span>
+                                      <span class="s1">'nTrain_Background=4000:'</span>
+                                      <span class="s1">'SplitMode=Random:'</span>
+                                      <span class="s1">'NormMode=NumEvents:!V'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>DataSetInfo              : [dataset] : Added class "Signal"
+                         : Add Tree TreeS of type Signal with 6000 events
+DataSetInfo              : [dataset] : Added class "Background"
+                         : Add Tree TreeB of type Background with 6000 events
+                         : Dataset[dataset] : Class index : 0  name : Signal
+                         : Dataset[dataset] : Class index : 1  name : Background
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Generate-model">
+<a class="anchor" href="#Generate-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generate model<a class="anchor-link" href="#Generate-model"> </a>
+</h3>
+<p>Model Definition.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s1">'linear_1'</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">64</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s1">'linear_2'</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s1">'softmax'</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Define loss function and the Optimizer.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Define the train and predict function. Note that the arguments to train and predict function need to be fixed since we call the same method internally in the TMVA interface backend. A user may control the training process and the loop inside.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash flash-success">
+    <svg class="octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 000 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"></path></svg>
+    <strong>Tip: </strong>You may implement the training loop using <code>tqdm</code> for a nice progress bar! 😁
+</div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">num_epochs</span><span class="p">,</span>
+          <span class="n">batch_size</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">save_best</span><span class="p">,</span> <span class="n">scheduler</span><span class="p">):</span>
+    <span class="n">trainer</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">schedule</span><span class="p">,</span> <span class="n">schedulerSteps</span> <span class="o">=</span> <span class="n">scheduler</span>
+    <span class="n">best_val</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+        <span class="c1"># Training Loop</span>
+        <span class="c1"># Set to train mode</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">running_train_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">running_val_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+            <span class="n">trainer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">train_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="n">train_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">trainer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+            <span class="c1"># print train statistics</span>
+            <span class="n">running_train_loss</span> <span class="o">+=</span> <span class="n">train_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">64</span> <span class="o">==</span> <span class="mi">63</span><span class="p">:</span>    <span class="c1"># print every 64 mini-batches</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">] train loss:"</span>
+                      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">running_train_loss</span> <span class="o">/</span> <span class="mi">64</span> <span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                <span class="n">running_train_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="k">if</span> <span class="n">schedule</span><span class="p">:</span>
+            <span class="n">schedule</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">schedulerSteps</span><span class="p">)</span>
+
+        <span class="c1"># Validation Loop</span>
+        <span class="c1"># Set to eval mode</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">val_loader</span><span class="p">):</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+                <span class="n">val_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                <span class="n">running_val_loss</span> <span class="o">+=</span> <span class="n">val_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="n">curr_val</span> <span class="o">=</span> <span class="n">running_val_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_loader</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">save_best</span><span class="p">:</span>
+               <span class="k">if</span> <span class="n">best_val</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+                   <span class="n">best_val</span> <span class="o">=</span> <span class="n">curr_val</span>
+               <span class="n">best_val</span> <span class="o">=</span> <span class="n">save_best</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">curr_val</span><span class="p">,</span> <span class="n">best_val</span><span class="p">)</span>
+
+            <span class="c1"># print val statistics per epoch</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">] val loss: </span><span class="si">{</span><span class="n">curr_val</span> <span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="n">running_val_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Finished Training on </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> Epochs!"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Define predict function.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash flash-warn">
+    <svg class="octicon octicon-zap octicon octicon-zap" viewbox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10 7H6l3-7-9 9h4l-3 7 9-9z"></path></svg>
+    <strong>Important: </strong>TMVA’s interface deals with the dataset by converting them to numpy arrays internally and later serving torch dataloaders which we indeed pass into our training function. But, note that at test/inference time, we are presented with numpy array inputs and we need to convert those to PyTorch tensors within the <code>predict</code> method. Similarly we need to return the predicted numpy array back to TMVA.
+</div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_X</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
+    <span class="c1"># Set to eval mode</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+   
+    <span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">predictions</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we have defined the necessary components required for downloading, preprocessing, dataloaders,
+building our model, training loop and a prediction method for evaluation. We need to share some of these components with the TMVA Interface backend.</p>
+<p><br></p>
+<p>This can be simply done by defining dictionary: <code>load_model_custom_objects</code></p>
+<p><strong>Keys:</strong></p>
+<ul>
+<li>"optimizer"</li>
+<li>"criterion"</li>
+<li>"train_func"</li>
+<li>"predict_func"</li>
+</ul>
+<p><br>
+</p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>The keys and the name of the dictionary need to be as specified!
+</div>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Pass optimizer, loss, train, predict function objects,</span>
+<span class="c1"># defined earlier, as values to the dictionary</span>
+
+<span class="n">load_model_custom_objects</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"optimizer"</span><span class="p">:</span> <span class="n">optimizer</span><span class="p">,</span> <span class="s2">"criterion"</span><span class="p">:</span> <span class="n">loss</span><span class="p">,</span>
+                             <span class="s2">"train_func"</span><span class="p">:</span> <span class="n">train</span><span class="p">,</span> <span class="s2">"predict_func"</span><span class="p">:</span> <span class="n">predict</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Save-&amp;-Store-model">
+<a class="anchor" href="#Save-&amp;-Store-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Save &amp; Store model<a class="anchor-link" href="#Save-&amp;-Store-model"> </a>
+</h3>
+<p>Since the TMVA interface requires us to load the model from the stored file without re-definition of model class, we need to convert the model to torchscript before saving for achieving this functionality.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s2">"model.pt"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Sequential(
+  (linear_1): Linear(in_features=4, out_features=64, bias=True)
+  (relu): ReLU()
+  (linear_2): Linear(in_features=64, out_features=2, bias=True)
+  (softmax): Softmax(dim=1)
+)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Book-TMVA-methods">
+<a class="anchor" href="#Book-TMVA-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Book TMVA methods<a class="anchor-link" href="#Book-TMVA-methods"> </a>
+</h3>
+<p>Now we will proceed by booking the MVA methods which we require. We book Fisher and PyTorch methods.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">factory</span><span class="o">.</span><span class="n">BookMethod</span><span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">TMVA</span><span class="o">.</span><span class="n">Types</span><span class="o">.</span><span class="n">kFisher</span><span class="p">,</span> <span class="s1">'Fisher'</span><span class="p">,</span>
+                   <span class="s1">'!H:!V:Fisher:VarTransform=D,G'</span><span class="p">)</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">BookMethod</span><span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">TMVA</span><span class="o">.</span><span class="n">Types</span><span class="o">.</span><span class="n">kPyTorch</span><span class="p">,</span> <span class="s1">'PyTorch'</span><span class="p">,</span>
+                   <span class="s1">'H:!V:VarTransform=D,G:FilenameModel=model.pt:'</span>
+                   <span class="s1">'NumEpochs=20:BatchSize=32'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>custom objects for loading model :  {'optimizer': &lt;class 'torch.optim.sgd.SGD'&gt;, 'criterion': MSELoss(), 'train_func': &lt;function train at 0x1404b59e0&gt;, 'predict_func': &lt;function predict at 0x1404bb050&gt;}
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;cppyy.gbl.TMVA.MethodPyTorch object at 0x7fabf8260600&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Factory                  : Booking method: <span class="ansi-bold">Fisher</span>
+                         : 
+Fisher                   : [dataset] : Create Transformation "D" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'var1' &lt;---&gt; Output : variable 'var1'
+                         : Input : variable 'var2' &lt;---&gt; Output : variable 'var2'
+                         : Input : variable 'var3' &lt;---&gt; Output : variable 'var3'
+                         : Input : variable 'var4' &lt;---&gt; Output : variable 'var4'
+Fisher                   : [dataset] : Create Transformation "G" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'var1' &lt;---&gt; Output : variable 'var1'
+                         : Input : variable 'var2' &lt;---&gt; Output : variable 'var2'
+                         : Input : variable 'var3' &lt;---&gt; Output : variable 'var3'
+                         : Input : variable 'var4' &lt;---&gt; Output : variable 'var4'
+Factory                  : Booking method: <span class="ansi-bold">PyTorch</span>
+                         : 
+PyTorch                  : [dataset] : Create Transformation "D" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'var1' &lt;---&gt; Output : variable 'var1'
+                         : Input : variable 'var2' &lt;---&gt; Output : variable 'var2'
+                         : Input : variable 'var3' &lt;---&gt; Output : variable 'var3'
+                         : Input : variable 'var4' &lt;---&gt; Output : variable 'var4'
+PyTorch                  : [dataset] : Create Transformation "G" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'var1' &lt;---&gt; Output : variable 'var1'
+                         : Input : variable 'var2' &lt;---&gt; Output : variable 'var2'
+                         : Input : variable 'var3' &lt;---&gt; Output : variable 'var3'
+                         : Input : variable 'var4' &lt;---&gt; Output : variable 'var4'
+                         : Using PyTorch - setting special configuration options 
+                         : Using PyTorch version 1
+                         :  Setup PyTorch Model 
+                         : Loaded pytorch train function: 
+                         : Loaded pytorch optimizer: 
+                         : Loaded pytorch loss function: 
+                         : Loaded pytorch predict function: 
+                         : Load model from file: model.pt
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Training">
+<a class="anchor" href="#Training" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training<a class="anchor-link" href="#Training"> </a>
+</h3>
+<p>Call the <code>TrainAllMethods</code> from the factory object to initiate training.
+Note: The output of this cell has been hidden for better readability and to avoid the verbosity.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">factory</span><span class="o">.</span><span class="n">TrainAllMethods</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>RecursiveScriptModule(
+  original_name=Sequential
+  (linear_1): RecursiveScriptModule(original_name=Linear)
+  (relu): RecursiveScriptModule(original_name=ReLU)
+  (linear_2): RecursiveScriptModule(original_name=Linear)
+  (softmax): RecursiveScriptModule(original_name=Softmax)
+)
+[Epoch 1, 64] train loss:0.229
+[Epoch 1, 128] train loss:0.201
+[Epoch 1, 192] train loss:0.177
+[Epoch 1] val loss: 0.173
+[Epoch 2, 64] train loss:0.164
+[Epoch 2, 128] train loss:0.160
+[Epoch 2, 192] train loss:0.147
+[Epoch 2] val loss: 0.150
+[Epoch 3, 64] train loss:0.143
+[Epoch 3, 128] train loss:0.144
+[Epoch 3, 192] train loss:0.134
+[Epoch 3] val loss: 0.139
+[Epoch 4, 64] train loss:0.134
+[Epoch 4, 128] train loss:0.137
+[Epoch 4, 192] train loss:0.127
+[Epoch 4] val loss: 0.134
+[Epoch 5, 64] train loss:0.128
+[Epoch 5, 128] train loss:0.132
+[Epoch 5, 192] train loss:0.122
+[Epoch 5] val loss: 0.130
+[Epoch 6, 64] train loss:0.124
+[Epoch 6, 128] train loss:0.129
+[Epoch 6, 192] train loss:0.119
+[Epoch 6] val loss: 0.127
+[Epoch 7, 64] train loss:0.121
+[Epoch 7, 128] train loss:0.126
+[Epoch 7, 192] train loss:0.116
+[Epoch 7] val loss: 0.125
+[Epoch 8, 64] train loss:0.118
+[Epoch 8, 128] train loss:0.124
+[Epoch 8, 192] train loss:0.114
+[Epoch 8] val loss: 0.123
+[Epoch 9, 64] train loss:0.116
+[Epoch 9, 128] train loss:0.122
+[Epoch 9, 192] train loss:0.112
+[Epoch 9] val loss: 0.121
+[Epoch 10, 64] train loss:0.114
+[Epoch 10, 128] train loss:0.121
+[Epoch 10, 192] train loss:0.111
+[Epoch 10] val loss: 0.120
+[Epoch 11, 64] train loss:0.113
+[Epoch 11, 128] train loss:0.120
+[Epoch 11, 192] train loss:0.110
+[Epoch 11] val loss: 0.119
+[Epoch 12, 64] train loss:0.111
+[Epoch 12, 128] train loss:0.119
+[Epoch 12, 192] train loss:0.108
+[Epoch 12] val loss: 0.118
+[Epoch 13, 64] train loss:0.110
+[Epoch 13, 128] train loss:0.118
+[Epoch 13, 192] train loss:0.107
+[Epoch 13] val loss: 0.117
+[Epoch 14, 64] train loss:0.109
+[Epoch 14, 128] train loss:0.117
+[Epoch 14, 192] train loss:0.106
+[Epoch 14] val loss: 0.116
+[Epoch 15, 64] train loss:0.108
+[Epoch 15, 128] train loss:0.116
+[Epoch 15, 192] train loss:0.105
+[Epoch 15] val loss: 0.115
+[Epoch 16, 64] train loss:0.107
+[Epoch 16, 128] train loss:0.115
+[Epoch 16, 192] train loss:0.104
+[Epoch 16] val loss: 0.115
+[Epoch 17, 64] train loss:0.106
+[Epoch 17, 128] train loss:0.115
+[Epoch 17, 192] train loss:0.104
+[Epoch 17] val loss: 0.114
+[Epoch 18, 64] train loss:0.105
+[Epoch 18, 128] train loss:0.114
+[Epoch 18, 192] train loss:0.103
+[Epoch 18] val loss: 0.113
+[Epoch 19, 64] train loss:0.105
+[Epoch 19, 128] train loss:0.113
+[Epoch 19, 192] train loss:0.102
+[Epoch 19] val loss: 0.113
+[Epoch 20, 64] train loss:0.104
+[Epoch 20, 128] train loss:0.113
+[Epoch 20, 192] train loss:0.102
+[Epoch 20] val loss: 0.112
+Finished Training on 20 Epochs!
+Factory                  : <span class="ansi-bold">Train all methods</span>
+                         : Building event vectors for type 2 Signal
+                         : Dataset[dataset] :  create input formulas for tree TreeS
+                         : Building event vectors for type 2 Background
+                         : Dataset[dataset] :  create input formulas for tree TreeB
+DataSetFactory           : [dataset] : Number of events in input trees
+                         : 
+                         : 
+                         : Number of training and testing events
+                         : ---------------------------------------------------------------------------
+                         : Signal     -- training events            : 4000
+                         : Signal     -- testing events             : 2000
+                         : Signal     -- training and testing events: 6000
+                         : Background -- training events            : 4000
+                         : Background -- testing events             : 2000
+                         : Background -- training and testing events: 6000
+                         : 
+DataSetInfo              : Correlation matrix (Signal):
+                         : ----------------------------------------
+                         :             var1    var2    var3    var4
+                         :    var1:  +1.000  +0.391  +0.590  +0.813
+                         :    var2:  +0.391  +1.000  +0.692  +0.734
+                         :    var3:  +0.590  +0.692  +1.000  +0.851
+                         :    var4:  +0.813  +0.734  +0.851  +1.000
+                         : ----------------------------------------
+DataSetInfo              : Correlation matrix (Background):
+                         : ----------------------------------------
+                         :             var1    var2    var3    var4
+                         :    var1:  +1.000  +0.855  +0.914  +0.965
+                         :    var2:  +0.855  +1.000  +0.927  +0.936
+                         :    var3:  +0.914  +0.927  +1.000  +0.970
+                         :    var4:  +0.965  +0.936  +0.970  +1.000
+                         : ----------------------------------------
+DataSetFactory           : [dataset] :  
+                         : 
+Factory                  : [dataset] : Create Transformation "D" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'var1' &lt;---&gt; Output : variable 'var1'
+                         : Input : variable 'var2' &lt;---&gt; Output : variable 'var2'
+                         : Input : variable 'var3' &lt;---&gt; Output : variable 'var3'
+                         : Input : variable 'var4' &lt;---&gt; Output : variable 'var4'
+Factory                  : [dataset] : Create Transformation "G" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'var1' &lt;---&gt; Output : variable 'var1'
+                         : Input : variable 'var2' &lt;---&gt; Output : variable 'var2'
+                         : Input : variable 'var3' &lt;---&gt; Output : variable 'var3'
+                         : Input : variable 'var4' &lt;---&gt; Output : variable 'var4'
+                         : Preparing the Decorrelation transformation...
+                         : Preparing the Gaussian transformation...
+TFHandler_Factory        : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :     var1:  0.0084120     1.0019   [    -3.1195     5.7307 ]
+                         :     var2:  0.0078511    0.99981   [    -3.1195     5.7307 ]
+                         :     var3:  0.0083128     1.0011   [    -3.1195     5.7307 ]
+                         :     var4:  0.0076997    0.99886   [    -3.1195     5.7307 ]
+                         : -----------------------------------------------------------
+Factory                  : Train method: Fisher for Classification
+                         : 
+                         : Preparing the Decorrelation transformation...
+                         : Preparing the Gaussian transformation...
+TFHandler_Fisher         : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :     var1:  0.0084120     1.0019   [    -3.1195     5.7307 ]
+                         :     var2:  0.0078511    0.99981   [    -3.1195     5.7307 ]
+                         :     var3:  0.0083128     1.0011   [    -3.1195     5.7307 ]
+                         :     var4:  0.0076997    0.99886   [    -3.1195     5.7307 ]
+                         : -----------------------------------------------------------
+Fisher                   : Results for Fisher coefficients:
+                         : NOTE: The coefficients must be applied to TRANFORMED variables
+                         :   List of the transformation: 
+                         :   -- Deco
+                         :   -- Gauss
+                         : -----------------------
+                         : Variable:  Coefficient:
+                         : -----------------------
+                         :     var1:       -0.221
+                         :     var2:       -0.055
+                         :     var3:       +0.032
+                         :     var4:       +0.474
+                         : (offset):       -0.002
+                         : -----------------------
+                         : Elapsed time for training with 8000 events: 0.0537 sec         
+Fisher                   : [dataset] : Evaluation of Fisher on training sample (8000 events)
+                         : Elapsed time for evaluation of 8000 events: 0.0226 sec       
+                         : Creating xml weight file: <span class="ansi-cyan-fg">dataset/weights/TMVAClassification_Fisher.weights.xml</span>
+                         : Creating standalone class: <span class="ansi-cyan-fg">dataset/weights/TMVAClassification_Fisher.class.C</span>
+Factory                  : Training finished
+                         : 
+Factory                  : Train method: PyTorch for Classification
+                         : 
+                         : 
+                         : <span class="ansi-bold">================================================================</span>
+                         : <span class="ansi-bold">H e l p   f o r   M V A   m e t h o d   [ PyTorch ] :</span>
+                         : 
+                         : PyTorch is a scientific computing package supporting
+                         : automatic differentiation. This method wraps the training
+                         : and predictions steps of the PyTorch Python package for
+                         : TMVA, so that dataloading, preprocessing and evaluation
+                         : can be done within the TMVA system. To use this PyTorch
+                         : interface, you need to generatea model with PyTorch first.
+                         : Then, this model can be loaded and trained in TMVA.
+                         : 
+                         : 
+                         : &lt;Suppress this message by specifying "!H" in the booking option&gt;
+                         : <span class="ansi-bold">================================================================</span>
+                         : 
+                         : Preparing the Decorrelation transformation...
+                         : Preparing the Gaussian transformation...
+TFHandler_PyTorch        : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :     var1:  0.0084120     1.0019   [    -3.1195     5.7307 ]
+                         :     var2:  0.0078511    0.99981   [    -3.1195     5.7307 ]
+                         :     var3:  0.0083128     1.0011   [    -3.1195     5.7307 ]
+                         :     var4:  0.0076997    0.99886   [    -3.1195     5.7307 ]
+                         : -----------------------------------------------------------
+TFHandler_PyTorch        : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :     var1:  0.0084120     1.0019   [    -3.1195     5.7307 ]
+                         :     var2:  0.0078511    0.99981   [    -3.1195     5.7307 ]
+                         :     var3:  0.0083128     1.0011   [    -3.1195     5.7307 ]
+                         :     var4:  0.0076997    0.99886   [    -3.1195     5.7307 ]
+                         : -----------------------------------------------------------
+                         : Split TMVA training data in 6400 training events and 1600 validation events
+                         : Print Training Model Architecture
+                         : Option SaveBestOnly: Only model weights with smallest validation loss will be stored
+                         : Elapsed time for training with 8000 events: 4.39 sec         
+PyTorch                  : [dataset] : Evaluation of PyTorch on training sample (8000 events)
+                         : Elapsed time for evaluation of 8000 events: 0.0327 sec       
+                         : Creating xml weight file: <span class="ansi-cyan-fg">dataset/weights/TMVAClassification_PyTorch.weights.xml</span>
+                         : Creating standalone class: <span class="ansi-cyan-fg">dataset/weights/TMVAClassification_PyTorch.class.C</span>
+Factory                  : Training finished
+                         : 
+                         : Ranking input variables (method specific)...
+Fisher                   : Ranking result (top variable is best ranked)
+                         : -------------------------------
+                         : Rank : Variable  : Discr. power
+                         : -------------------------------
+                         :    1 : var4      : 1.956e-01
+                         :    2 : var1      : 4.019e-02
+                         :    3 : var2      : 3.086e-03
+                         :    4 : var3      : 2.351e-04
+                         : -------------------------------
+                         : No variable ranking supplied by classifier: PyTorch
+Factory                  : === Destroy and recreate all methods via weight files for testing ===
+                         : 
+                         : Reading weight file: <span class="ansi-cyan-fg">dataset/weights/TMVAClassification_Fisher.weights.xml</span>
+                         : Reading weight file: <span class="ansi-cyan-fg">dataset/weights/TMVAClassification_PyTorch.weights.xml</span>
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>0%, time left: unknown
+7%, time left: 0 sec
+13%, time left: 0 sec
+19%, time left: 0 sec
+25%, time left: 0 sec
+32%, time left: 0 sec
+38%, time left: 0 sec
+44%, time left: 0 sec
+50%, time left: 0 sec
+57%, time left: 0 sec
+63%, time left: 0 sec
+69%, time left: 0 sec
+75%, time left: 0 sec
+82%, time left: 0 sec
+88%, time left: 0 sec
+94%, time left: 0 sec
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Testing">
+<a class="anchor" href="#Testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing<a class="anchor-link" href="#Testing"> </a>
+</h3>
+<p>Call the <code>TestAllMethods</code> from the factory object to initiate testing.
+Note: The output of this cell has been hidden for better readability and to avoid the verbosity.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">factory</span><span class="o">.</span><span class="n">TestAllMethods</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>custom objects for loading model :  {'optimizer': &lt;class 'torch.optim.sgd.SGD'&gt;, 'criterion': MSELoss(), 'train_func': &lt;function train at 0x1404b59e0&gt;, 'predict_func': &lt;function predict at 0x1404bb050&gt;}
+Factory                  : <span class="ansi-bold">Test all methods</span>
+Factory                  : Test method: Fisher for Classification performance
+                         : 
+Fisher                   : [dataset] : Evaluation of Fisher on testing sample (4000 events)
+                         : Elapsed time for evaluation of 4000 events: 0.0188 sec       
+Factory                  : Test method: PyTorch for Classification performance
+                         : 
+                         :  Setup PyTorch Model 
+                         : Loaded pytorch train function: 
+                         : Loaded pytorch optimizer: 
+                         : Loaded pytorch loss function: 
+                         : Loaded pytorch predict function: 
+                         : Load model from file: dataset/weights/TrainedModel_PyTorch.pt
+PyTorch                  : [dataset] : Evaluation of PyTorch on testing sample (4000 events)
+                         : Elapsed time for evaluation of 4000 events: 0.0324 sec       
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>0%, time left: unknown
+7%, time left: 0 sec
+13%, time left: 0 sec
+19%, time left: 0 sec
+25%, time left: 0 sec
+32%, time left: 0 sec
+38%, time left: 0 sec
+44%, time left: 0 sec
+50%, time left: 0 sec
+57%, time left: 0 sec
+63%, time left: 0 sec
+69%, time left: 0 sec
+75%, time left: 0 sec
+82%, time left: 0 sec
+88%, time left: 0 sec
+94%, time left: 0 sec
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Evaluation">
+<a class="anchor" href="#Evaluation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Evaluation<a class="anchor-link" href="#Evaluation"> </a>
+</h3>
+<p>Call the <code>EvaluateAllMethods</code> from the factory object to initiate evaluation. Here we evaluate all methods and compare their performances, computing efficiencies, ROC curves etc. using both training and tetsing data sets.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">factory</span><span class="o">.</span><span class="n">EvaluateAllMethods</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Factory                  : <span class="ansi-bold">Evaluate all methods</span>
+Factory                  : Evaluate classifier: Fisher
+                         : 
+TFHandler_Fisher         : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :     var1:   0.015907    0.98605   [    -2.8645     3.5534 ]
+                         :     var2:  0.0046941     1.0002   [    -3.2858     3.3764 ]
+                         :     var3:   0.017030    0.99729   [    -2.9032     5.7307 ]
+                         :     var4: -0.0011286    0.98455   [    -2.8276     3.2696 ]
+                         : -----------------------------------------------------------
+Fisher                   : [dataset] : Loop over test events and fill histograms with classifier response...
+                         : 
+TFHandler_Fisher         : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :     var1:   0.015907    0.98605   [    -2.8645     3.5534 ]
+                         :     var2:  0.0046941     1.0002   [    -3.2858     3.3764 ]
+                         :     var3:   0.017030    0.99729   [    -2.9032     5.7307 ]
+                         :     var4: -0.0011286    0.98455   [    -2.8276     3.2696 ]
+                         : -----------------------------------------------------------
+Factory                  : Evaluate classifier: PyTorch
+                         : 
+TFHandler_PyTorch        : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :     var1:   0.015907    0.98605   [    -2.8645     3.5534 ]
+                         :     var2:  0.0046941     1.0002   [    -3.2858     3.3764 ]
+                         :     var3:   0.017030    0.99729   [    -2.9032     5.7307 ]
+                         :     var4: -0.0011286    0.98455   [    -2.8276     3.2696 ]
+                         : -----------------------------------------------------------
+PyTorch                  : [dataset] : Loop over test events and fill histograms with classifier response...
+                         : 
+TFHandler_PyTorch        : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :     var1:   0.015907    0.98605   [    -2.8645     3.5534 ]
+                         :     var2:  0.0046941     1.0002   [    -3.2858     3.3764 ]
+                         :     var3:   0.017030    0.99729   [    -2.9032     5.7307 ]
+                         :     var4: -0.0011286    0.98455   [    -2.8276     3.2696 ]
+                         : -----------------------------------------------------------
+                         : 
+                         : Evaluation results ranked by best signal efficiency and purity (area)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet       MVA                       
+                         : Name:         Method:          ROC-integ
+                         : dataset       PyTorch        : 0.929
+                         : dataset       Fisher         : 0.880
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+                         : Testing efficiency compared to training efficiency (overtraining check)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet              MVA              Signal efficiency: from test sample (from training sample) 
+                         : Name:                Method:          @B=0.01             @B=0.10            @B=0.30   
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : dataset              PyTorch        : 0.330 (0.294)       0.771 (0.774)      0.953 (0.953)
+                         : dataset              Fisher         : 0.192 (0.190)       0.645 (0.646)      0.884 (0.876)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+Dataset:dataset          : Created tree 'TestTree' with 4000 events
+                         : 
+Dataset:dataset          : Created tree 'TrainTree' with 8000 events
+                         : 
+Factory                  : <span class="ansi-bold">Thank you for using TMVA!</span>
+                         : <span class="ansi-bold">For citation information, please visit: http://tmva.sf.net/citeTMVA.html</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Plots">
+<a class="anchor" href="#Plots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plots<a class="anchor-link" href="#Plots"> </a>
+</h3>
+<p>We can now analyze the results using histogram plots and ROC curves. Several histograms are produced after calling evaluation, which can be examined with the TMVA GUI or directly using the output file.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">roc</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">GetROCCurve</span><span class="p">(</span><span class="n">dataloader</span><span class="p">)</span>
+<span class="n">roc</span><span class="o">.</span><span class="n">Draw</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0A">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+<p>That is all for this tutorial and with that I've wrapped up my project. Stay tuned for my final post about the GSoC journey at CERN.</p>
+<p>Feel free to ask questions below in the comments or on the <a href="https://root-forum.cern.ch/">root forum</a>.</p>
+<p>Until next time,
+Signing Off!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="AnirudhDagar/gsoc"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/gsoc/tmva/pytorch/root/2020/08/21/TMVA-PyTorch-Tutorial.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/gsoc/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/gsoc/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/gsoc/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Anirudh Dagar&#39;s GSoC 2020 Blog @ CERN-HSF</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/anirudhdagar" title="anirudhdagar"><svg class="svg-icon grey"><use xlink:href="/gsoc/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/gollum_here" title="gollum_here"><svg class="svg-icon grey"><use xlink:href="/gsoc/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  
+  <!-- Added by Anirudh Dagar on 8th May -->
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>PyTorch &amp; TorchScript | GSoC</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="PyTorch &amp; TorchScript" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Though there are numerous tutorials on PyTorch out there, I wanted to compose a little post for individuals who may wind up utilizing the TMVA PyTorch Interface. I also want to draw some contrasts, defining distinctions between Keras and PyTorch interfaces in TMVA." />
+<meta property="og:description" content="Though there are numerous tutorials on PyTorch out there, I wanted to compose a little post for individuals who may wind up utilizing the TMVA PyTorch Interface. I also want to draw some contrasts, defining distinctions between Keras and PyTorch interfaces in TMVA." />
+<link rel="canonical" href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/06/17/PyTorch-and-TorchScript.html" />
+<meta property="og:url" content="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/06/17/PyTorch-and-TorchScript.html" />
+<meta property="og:site_name" content="GSoC" />
+<meta property="og:image" content="https://anirudhdagar.github.io/gsoc/images/PyTorch.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-17T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Though there are numerous tutorials on PyTorch out there, I wanted to compose a little post for individuals who may wind up utilizing the TMVA PyTorch Interface. I also want to draw some contrasts, defining distinctions between Keras and PyTorch interfaces in TMVA.","@type":"BlogPosting","url":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/06/17/PyTorch-and-TorchScript.html","dateModified":"2020-06-17T00:00:00-05:00","datePublished":"2020-06-17T00:00:00-05:00","headline":"PyTorch &amp; TorchScript","image":"https://anirudhdagar.github.io/gsoc/images/PyTorch.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/06/17/PyTorch-and-TorchScript.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/gsoc/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://anirudhdagar.github.io/gsoc/feed.xml" title="GSoC" /><link rel="shortcut icon" type="image/x-icon" href="/gsoc/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>PyTorch &amp; TorchScript | GSoC</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="PyTorch &amp; TorchScript" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Though there are numerous tutorials on PyTorch out there, I wanted to compose a little post for individuals who may wind up utilizing the TMVA PyTorch Interface. I also want to draw some contrasts, defining distinctions between Keras and PyTorch interfaces in TMVA." />
+<meta property="og:description" content="Though there are numerous tutorials on PyTorch out there, I wanted to compose a little post for individuals who may wind up utilizing the TMVA PyTorch Interface. I also want to draw some contrasts, defining distinctions between Keras and PyTorch interfaces in TMVA." />
+<link rel="canonical" href="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/06/17/PyTorch-and-TorchScript.html" />
+<meta property="og:url" content="https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/06/17/PyTorch-and-TorchScript.html" />
+<meta property="og:site_name" content="GSoC" />
+<meta property="og:image" content="https://anirudhdagar.github.io/gsoc/images/PyTorch.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-17T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"Though there are numerous tutorials on PyTorch out there, I wanted to compose a little post for individuals who may wind up utilizing the TMVA PyTorch Interface. I also want to draw some contrasts, defining distinctions between Keras and PyTorch interfaces in TMVA.","@type":"BlogPosting","url":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/06/17/PyTorch-and-TorchScript.html","dateModified":"2020-06-17T00:00:00-05:00","datePublished":"2020-06-17T00:00:00-05:00","headline":"PyTorch &amp; TorchScript","image":"https://anirudhdagar.github.io/gsoc/images/PyTorch.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://anirudhdagar.github.io/gsoc/tmva/pytorch/torchscript/2020/06/17/PyTorch-and-TorchScript.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://anirudhdagar.github.io/gsoc/feed.xml" title="GSoC" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+<script type="text/javascript">
+require.config({
+  paths: {
+    jquery: 'https://code.jquery.com/jquery-3.5.0.min',
+    plotly: 'https://cdn.plot.ly/plotly-latest.min'
+  },
+
+  shim: {
+    plotly: {
+      deps: ['jquery'],
+      exports: 'plotly'
+    }
+  }
+});
+</script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/gsoc/">GSoC</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/gsoc/about/">About Me</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">PyTorch &amp; TorchScript</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-17T00:00:00-05:00" itemprop="datePublished">
+        Jun 17, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/gsoc/categories/#tmva">tmva</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/gsoc/categories/#pytorch">pytorch</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/gsoc/categories/#torchscript">torchscript</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Though there are numerous tutorials on PyTorch out there, I wanted to compose a little post for individuals who may wind up utilizing the TMVA PyTorch Interface. I also want to draw some contrasts, defining distinctions between Keras and PyTorch interfaces in TMVA.</p>
+
+<p>PyTorch is a Python-based scientific computing package supporting a​utomatic differentiation.​ An ​open source machine learning​ framework that accelerates the path from research prototyping to production deployment. ​A research platform that provides maximum flexibility​ and s​ peed.</p>
+
+<p><img alt="Can't See? Something went wrong!" src="/gsoc/images/Keras-or-PyTorch.png" width="80%" /></p>
+
+<p>Both the frameworks are really useful in their own ways. For your daily machine learning models, you can achieve similar results with any of the two.</p>
+
+<p>Keras shines especially with it’s super simple high-level tensorflow API. It may be easier to get into and experiment with standard layers. If your work involves some simple experiments, Keras maybe the goto framework due to its plug &amp; play spirit.</p>
+
+<p>But, things get interesting when one requires low level control and flexibility. That’s when the argument for Keras starts losing water. PyTorch on the other hand is amazing in terms of control, flexibility and raw power that it can provide to the user. PyTorch offers a lower-level approach for the more mathematically-inclined users.</p>
+
+<p>PyTorch is widely used​ among researchers and hence has a large community around it continuously pushing the state of the art developements and advancements into the framework.</p>
+
+<p><strong>Need for PyTorch Interface?</strong></p>
+
+<p>● Allows to combine ROOT, which is good at handling HEP data and PyTorch which can be used for Deep Learning needs.</p>
+
+<p>● <strong>Power &amp; Flexibility</strong>: ​Not easy to develop using TMVA, as they require complex configuration strings. Even with PyKeras Interface, designing custom layers is not feasible. PyTorch offers the power and flexibility to achieve complex models with custom layers, optimizers, loss functions and training methodologies.</p>
+
+<p>● <strong>Ease of Debugging</strong>: ​PyTorch models make use of dynamic computation graphs and are based on eager execution. This makes it easier to use debugging tools like pdb.</p>
+
+<p>● <strong>Performance</strong>: PyTorch performs much better than Keras due to it’s highly optimized C++ backend.</p>
+
+<h3 id="defining-models-in-pytorch">Defining Models in PyTorch</h3>
+
+<p>Below I’m sharing a few options which can be employed to define models in pytorch based on the requirement. As mentioned earlier the customizations possible here are limited to your imagination.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># Implemented using the torch.nn.Module
+</span><span class="k">class</span> <span class="err">​</span><span class="nc">TwoLayerNet</span><span class="err">​</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+	<span class="k">def</span> <span class="err">​</span><span class="nf">__init__</span><span class="err">​</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">D_in</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">D_out</span><span class="p">):</span>
+	<span class="err">​</span><span class="s">"""
+	In the constructor we instantiate two nn.Linear
+	modules and assign them as member variables.
+	"""</span>
+	<span class="nb">super</span><span class="p">(</span><span class="n">TwoLayerNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+	<span class="bp">self</span><span class="o">.</span><span class="n">linear1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">D_in</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+	<span class="bp">self</span><span class="o">.</span><span class="n">linear2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">D_out</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="err">​</span><span class="nf">forward</span><span class="err">​</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+	<span class="err">​</span><span class="s">"""
+	In the forward function we accept a tensor of input data
+	and we must return a tensor of output data. We can use
+	modules defined in the constructor as well as arbitrary
+	operators on tensors.
+	"""</span>
+	<span class="n">h_relu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="err">​</span><span class="mi">0</span><span class="err">​</span><span class="p">)</span>
+	<span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span><span class="p">(</span><span class="n">h_relu</span><span class="p">)</span>
+	
+	<span class="k">return</span> <span class="n">y_pred</span>
+
+
+<span class="c1"># N is batch size; D_in is input dimension;
+# H is hidden dimension; D_out is output dimension.
+</span><span class="n">N</span><span class="p">,</span> <span class="n">D_in</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">D_out</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span>
+
+
+<span class="c1"># Construct our model by instantiating the class defined above
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">TwoLayerNet</span><span class="p">(</span><span class="n">D_in</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">D_out</span><span class="p">)</span>
+
+<span class="c1">##########
+# OR
+##########
+</span>
+<span class="c1"># Similar to Keras
+# Implemented using the torch.nn.Sequential Module
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequqntial</span><span class="p">(</span>
+	<span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">D_in</span><span class="p">,</span> <span class="n">H</span><span class="p">),</span>
+	<span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+	<span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">D_out</span><span class="p">)</span>
+	<span class="p">)</span>
+
+<span class="c1">##########
+# OR
+##########
+</span>
+<span class="c1"># One can choose to implement using ModuleList/ModuleDict
+# See the PyTorch Documentation for more details on containers.
+</span></code></pre></div></div>
+
+<p>Anyways to develop our interface we need the ability to store a defined model into a file which can be later loaded into the TMVA C++ backend when Booking and Training the models.</p>
+
+<p>While <code class="highlighter-rouge">model.save()</code> in keras saves the whole model in <code class="highlighter-rouge">.hdf5</code> file along with other information, in PyTorch, one can achieve similar functionality using <code class="highlighter-rouge">torch.save()</code>. The issue here is that before we load back the model into memory from the saved file, it requires you to define the model class again. <code class="highlighter-rouge">torch.save</code> inputs a dictionary to save only the model parameters and other learnable parameters (optimizers state etc.) or variables like <code class="highlighter-rouge">current_epoch</code>. Though that is neat, we require our model to be completely stored in a file which can be later used without any knowledge of model definition.</p>
+
+<p><strong>Enter torchscript!</strong></p>
+
+<p>TorchScript is a way to create serializable and optimizable models from PyTorch code. Any TorchScript program can be saved from a Python process and loaded in a process where there is no Python dependency.</p>
+
+<p>PyTorch provides tools to incrementally transition a model from a pure Python program to a TorchScript program that can be run independently from Python, such as in a standalone C++ program. This makes it possible to train models in PyTorch using familiar tools in Python and then export the model via TorchScript to different environment where Python programs may be disadvantageous.</p>
+
+<p>Though torchscript, we can serialize and save the model which can be later loaded into the TMVA c++ backend from a stand-alone <code class="highlighter-rouge">.pt</code> file.</p>
+
+<p>Anyways, this was supposed to be a short post on torch and torchscript.
+I’ll be ending this now. There will be a more detailed post discussing the details of the internals and design choices made for the TMVA PyTorch Interface.</p>
+
+<p>Bbye for now!</p>
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="AnirudhDagar/gsoc"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/gsoc/tmva/pytorch/torchscript/2020/06/17/PyTorch-and-TorchScript.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/gsoc/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/gsoc/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/gsoc/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Anirudh Dagar&#39;s GSoC 2020 Blog @ CERN-HSF</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/anirudhdagar" title="anirudhdagar"><svg class="svg-icon grey"><use xlink:href="/gsoc/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/gollum_here" title="gollum_here"><svg class="svg-icon grey"><use xlink:href="/gsoc/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
