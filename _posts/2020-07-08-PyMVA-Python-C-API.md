@@ -29,7 +29,7 @@ But when you are a Python developer with a C or C++ library, you’d like to use
 
 Python bindings allow you to call functions and pass data from Python to C or C++, letting you take advantage of the strengths of both languages. Almost all the scientific packages that you may have used in Python are developed in C++. A few examples are Numpy, Pandas, PyTorch. Numpy, for example, achieves a lot of its performance by carefully managing (and reusing) memory, and calling it from Python avoids the garbage collection overheads of writing the same functions in Python.
 
-There are many slick tools and solutions for developing the python bindings, and if you are interested, I'd reccomend reading [this](https://iscinumpy.gitlab.io/post/tools-to-bind-to-python/) awesome blog by [Henry Schreiner](https://iscinumpy.gitlab.io/page/about/) explaining various binding tools in detail. 
+There are many slick tools and solutions for developing the python bindings, and if you are interested, I'd recommend reading [this](https://iscinumpy.gitlab.io/post/tools-to-bind-to-python/) awesome blog by [Henry Schreiner](https://iscinumpy.gitlab.io/page/about/) explaining various binding tools in detail. 
 
 <hr/>
 
