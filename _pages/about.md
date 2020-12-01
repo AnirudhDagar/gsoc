@@ -8,7 +8,7 @@ permalink: /about/
      alt="That's Me! Can't see?? Probably something went wrong." 
      style="float: center; border-radius: 50%; height: 50%; width: 50%; "/>
 
-I am Anirudh Dagar, final year undergraduate student at Indian Institute of Technology, Roorkee. I am passionate about open source and Machine Learning research. I am an active member at [Data Science Group, IIT Roorkee](https://dsgiitr.com/).
+I am [Anirudh Dagar](https://anirudhdagar.ml/), final year undergraduate student at Indian Institute of Technology, Roorkee. I am passionate about open source and Machine Learning research. I am an active member at [Data Science Group, IIT Roorkee](https://dsgiitr.com/).
 
 In the past, I have worked on projects in Graph Representation Learning, Natural Language Processing and Deep Learning. Previously, I worked at [MALL Lab](http://malllabiisc.github.io/) under the mentorship of [Prof. Partha Talukdar](http://talukdar.net/).
 
