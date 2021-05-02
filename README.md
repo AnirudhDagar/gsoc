@@ -41,4 +41,4 @@ Other Useful blog links about TMVA:
 * [Simon's Blog](http://simonpf.github.io/gsoc/)
 
 
-The website is powered by the [fastpages](https://github.com/fastai/fastpages) template and the minima theme.
+The website is powered by the [fastpages](https://github.com/fastai/fastpages) template and the minima theme. Build locally with docker installed and running using `make server`.
